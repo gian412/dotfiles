@@ -1,3 +1,4 @@
 .zshrc
 .config/nvim/init.vim
 .nvimInitFiles/*
+.vscode
