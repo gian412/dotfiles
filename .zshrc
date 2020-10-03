@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source "/home/gianluca/.profile"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -75,7 +77,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions auto-color-ls autoupdate you-should-use $plugins fast-syntax-highlighting dotfiles web-search)
+source $(dirname $(gem which colorls))/tab_complete.sh
+plugins=(git zsh-autosuggestions autoupdate you-should-use $plugins fast-syntax-highlighting dotfiles web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,6 +123,8 @@ alias psearch='sudo pacman -Ss'                                                 
 alias pinstall='sudo pacman -S'                                                     # Install package by name
 alias pfindunused='sudo pacman -Qtdq'						    # Find orphan packages
 alias prmunused='sudo pacman -Rns $(pacman -Qtdq)'				    # Remove orphan packages
+
+alias ls='colorls'                                                                  # List using colorls by default
 alias l='ls -al'                                                                    # List elements
 alias zshconfig='nvim ~/.zshrc'                                                     # Open zsh configuration file useing neovim
 alias v='nvim'							                                                        # Map neovim as v
