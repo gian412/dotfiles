@@ -1,7 +1,6 @@
 .zshrc
 .config/nvim/init.vim
 .nvimInitFiles/*
-.vscode
 .profile
 Pictures/walpapers
 
