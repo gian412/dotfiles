@@ -122,8 +122,9 @@ alias projects='cd /run/media/gianluca/Gianluca/Projects'
 alias pupdate='sudo pacman -Syyu'                                                   # Refresh package database and update all packages
 alias psearch='sudo pacman -Ss'                                                     # Search for a package by name
 alias pinstall='sudo pacman -S'                                                     # Install package by name
-alias pfindunused='sudo pacman -Qtdq'						    # Find orphan packages
-alias prmunused='sudo pacman -Rns $(pacman -Qtdq)'				    # Remove orphan packages
+alias puninstall='sudo pacman -Rcns'                                                # Uninstall package and his dependencies
+alias pfindunused='sudo pacman -Qtdq'						                                    # Find orphan packages
+alias prmunused='sudo pacman -Rns $(pacman -Qtdq)'				                          # Remove orphan packages
 
 alias ls='colorls'                                                                  # List using colorls by default
 alias l='ls -al'                                                                    # List elements
