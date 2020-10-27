@@ -145,7 +145,10 @@ alias runc='./main'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Display man pages in color
- export PAGER="most"
+export PAGER="most"
+
+# Python interactive startup file
+export PYTHONSTARTUP=$HOME/.pyrc
 
 # DOTNET - Required
 export PATH="$PATH:/home/YOUR_USER_NAME/.dotnet/tools"
