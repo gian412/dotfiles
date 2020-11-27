@@ -141,6 +141,11 @@ alias jarvisNvim='/home/gianluca/.nvimInitFiles/Scripts/jarvisNvim.sh'          
 alias startJsProject='/home/gianluca/Applications/Scripts/startJsProject.sh'        # Initial setup in order tu use eslint in a js project
 alias compilec='gcc -o main main.c'
 alias runc='./main'
+if (( $+commands[apt-get]  )); then
+  alias pi='sudo apt-get install'
+elif (( $+commands[pacman]  )); then
+    alias pi='sudo pacman -S'
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
