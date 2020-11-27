@@ -117,6 +117,7 @@ alias myip='curl http://ipecho.net/plain; echo'                                 
 alias distro='cat /etc/*-release'                                                   # See information about my distro
 alias reload='source ~/.zshrc'                                                      # Reload terminal
 alias projects='cd /run/media/gianluca/Gianluca/Projects'
+alias myip="curl http://ipecho.net/plain; echo"
 
 # pacman
 alias pupdate='sudo pacman -Syyu'                                                   # Refresh package database and update all packages
