@@ -130,11 +130,17 @@ if (( $+commands[pacman]  )); then
 elif (( $+commands[apt]  )); then
   alias ps='sudo apt find'
 fi
+if (( $+commands[yay]  )); then
+  alias psy='yay -Ss'
+fi
 # Install
 if (( $+commands[pacman]  )); then
   alias pi='sudo pacman -S'                                                     # Install package by name
 elif (( $+commands[apt]  )); then
   alias pi='sudo apt install'
+fi
+if (( $+commands[yay]  )); then
+  alias py='yay -S'                                                   # Refresh package database and update all packages
 fi
 # Uninstall
 if (( $+commands[pacman]  )); then
