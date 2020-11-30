@@ -110,23 +110,23 @@ export EDITOR='/usr/bin/nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 # ## Alias section
-alias cp="cp -i"                                                                    # Confirm before overwriting something
-alias df='df -h'                                                                    # Human-readable sizes
-alias free='free -m'                                                                # Show sizes in MB
-alias myip='curl http://ipecho.net/plain; echo'                                     # Find my public IP
-alias distro='cat /etc/*-release'                                                   # See information about my distro
-alias reload='source ~/.zshrc'                                                      # Reload terminal
+alias cp="cp -i"                                                                # Confirm before overwriting something
+alias df='df -h'                                                                # Human-readable sizes
+alias free='free -m'                                                            # Show sizes in MB
+alias myip='curl http://ipecho.net/plain; echo'                                 # Find my public IP
+alias distro='cat /etc/*-release'                                               # See information about my distro
+alias reload='source ~/.zshrc'                                                  # Reload terminal
 
 ############## package manager
 # Update && Upgrade
 if (( $+commands[yay]  )); then
-  alias pu='yay -Syu'                                                   # Refresh package database and update all packages
+  alias pu='yay'                                                                # Refresh package database and update all packages
 elif (( $+commands[apt]  )); then
   alias pu='sudo apt update && sudo apt upgrade'
 fi
 # Search for a package
 if (( $+commands[pacman]  )); then
-  alias ps='sudo pacman -Ss'                                                     # Search for a package by name
+  alias ps='sudo pacman -Ss'                                                    # Search for a package by name
 elif (( $+commands[apt]  )); then
   alias ps='sudo apt find'
 fi
@@ -140,36 +140,32 @@ elif (( $+commands[apt]  )); then
   alias pi='sudo apt install'
 fi
 if (( $+commands[yay]  )); then
-  alias py='yay -S'                                                   # Refresh package database and update all packages
+  alias py='yay -S'                                                             # Refresh package database and update all packages
 fi
 # Uninstall
 if (( $+commands[pacman]  )); then
-  alias pun='sudo pacman -Rcns'                                                # Uninstall package and his dependencies
+  alias pun='sudo pacman -Rcns'                                                 # Uninstall package and his dependencies
 elif (( $+commands[apt]  )); then
   alias pun='sudo apt remove'
 fi
 # Find orphan packages
-alias pfu='sudo pacman -Qtdq'						                                    # Find orphan packages
+alias pfu='sudo pacman -Qtdq'						                            # Find orphan packages
 #Remove orphan packages
 if (( $+commands[pacman]  )); then
-  alias puu='sudo pacman -Rns $(pacman -Qtdq)'				                          # Remove orphan packages
+  alias puu='sudo pacman -Rns $(pacman -Qtdq)'				                    # Remove orphan packages
 elif (( $+commands[apt]  )); then
   alias puu='sudo apt autoclean && sudo apt autoremove'
 fi
 
-alias ls='colorls'                                                                  # List using colorls by default
-alias l='ls -al'                                                                    # List elements
-alias zshconfig='nvim ~/.zshrc'                                                     # Open zsh configuration file useing neovim
-alias v='nvim'							                                                        # Map neovim as v
+alias ls='colorls'                                                              # List using colorls by default
+alias l='ls -al'                                                                # List elements
+alias zshconfig='nvim ~/.zshrc'                                                 # Open zsh configuration file using neovim
+alias v='nvim'							                                        # Map neovim as v
+alias sv='sudo nvim'							                                # Map sudo neovim as sv
 
 # Develope
 alias compilec='gcc -o main main.c'
 alias runc='./main'
-if (( $+commands[apt-get]  )); then
-  alias pi='sudo apt-get install'
-elif (( $+commands[pacman]  )); then
-    alias pi='sudo pacman -S'
-fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
