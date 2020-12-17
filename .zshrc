@@ -131,7 +131,7 @@ elif (( $+commands[apt]  )); then
   alias ps='sudo apt find'
 fi
 if (( $+commands[yay]  )); then
-  alias psy='yay -Ss'
+  alias ys='yay -Ss'
 fi
 # Install
 if (( $+commands[pacman]  )); then
@@ -140,13 +140,16 @@ elif (( $+commands[apt]  )); then
   alias pi='sudo apt install'
 fi
 if (( $+commands[yay]  )); then
-  alias py='yay -S'                                                             # Refresh package database and update all packages
+  alias yi='yay -S'                                                             # Refresh package database and update all packages
 fi
 # Uninstall
 if (( $+commands[pacman]  )); then
   alias pun='sudo pacman -Rcns'                                                 # Uninstall package and his dependencies
 elif (( $+commands[apt]  )); then
   alias pun='sudo apt remove'
+fi
+if (( $+commands[yay] )) then
+  alias yun='yay -Rcns'
 fi
 # Find orphan packages
 alias pfu='sudo pacman -Qtdq'						                            # Find orphan packages
