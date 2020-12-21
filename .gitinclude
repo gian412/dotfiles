@@ -1,8 +1,9 @@
 .zshrc
 .config/nvim/init.vim
+.config/i3/config
+.config/i3/config.bak
 .nvimInitFiles/*
 .profile
 Pictures/walpapers
 .vscodeCProj
 .pyrc
-/etc/mbpfan.conf
