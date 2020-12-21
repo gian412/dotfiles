@@ -119,10 +119,13 @@ alias reload='source ~/.zshrc'                                                  
 
 ############## package manager
 # Update && Upgrade
-if (( $+commands[yay]  )); then
-  alias pu='yay'                                                                # Refresh package database and update all packages
+if (( $+commands[pacman]  )); then
+  alias pu='sudo pacman -Syu'                                                   # Refresh package database and update all packages
 elif (( $+commands[apt]  )); then
   alias pu='sudo apt update && sudo apt upgrade'
+fi
+if (( $+commands[yay]  )); then
+  alias yu='yay'
 fi
 # Search for a package
 if (( $+commands[pacman]  )); then
