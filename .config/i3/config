@@ -216,6 +216,7 @@ exec_always --no-startup-id feh --bg-scale /home/morro/Immagini/wallpapers/fores
 # exec --no-startup-id wal -i /home/morro/Immagini/wallpapers/358221b85dc0c666cbd6bf4961a260db.jpg
 
 # exec_always --no-startup-id picom -bc
+exec --no-startup-id picom --backend glx --experimental-backends -bc
 
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 0
