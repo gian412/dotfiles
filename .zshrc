@@ -152,7 +152,7 @@ elif (( $+commands[apt]  )); then
   alias prm='sudo apt remove'
 fi
 if (( $+commands[yay] )) then
-  alias yun='yay -Rcns'
+  alias yrm='yay -Rcns'
 fi
 # Find orphan packages
 alias pfu='sudo pacman -Qtdq'						                            # Find orphan packages
