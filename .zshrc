@@ -147,9 +147,9 @@ if (( $+commands[yay]  )); then
 fi
 # Uninstall
 if (( $+commands[pacman]  )); then
-  alias pun='sudo pacman -Rcns'                                                 # Uninstall package and his dependencies
+  alias prm='sudo pacman -Rcns'                                                 # Uninstall package and his dependencies
 elif (( $+commands[apt]  )); then
-  alias pun='sudo apt remove'
+  alias prm='sudo apt remove'
 fi
 if (( $+commands[yay] )) then
   alias yun='yay -Rcns'
@@ -158,9 +158,9 @@ fi
 alias pfu='sudo pacman -Qtdq'						                            # Find orphan packages
 #Remove orphan packages
 if (( $+commands[pacman]  )); then
-  alias puu='sudo pacman -Rns $(pacman -Qtdq)'				                    # Remove orphan packages
+  alias prmu='sudo pacman -Rns $(pacman -Qtdq)'				                    # Remove orphan packages
 elif (( $+commands[apt]  )); then
-  alias puu='sudo apt autoclean && sudo apt autoremove'
+  alias prmu='sudo apt autoclean && sudo apt autoremove'
 fi
 
 alias ls='colorls'                                                              # List using colorls by default
