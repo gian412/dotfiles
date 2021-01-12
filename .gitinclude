@@ -5,6 +5,5 @@ Scripts/
 .config/i3/config.bak
 .nvimInitFiles/*
 .profile
-Pictures/walpapers
 .vscodeCProj
 .pyrc
