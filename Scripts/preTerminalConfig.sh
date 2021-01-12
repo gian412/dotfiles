@@ -11,19 +11,16 @@ This script is the first of a serie of two. It will do the following for you:
     - chromium: a web browser built for speed, simplicity, and security
     - speedtest-cli: command line interface for testing internet bandwidth using speedtest.net
     - npm: a package manager for javascript
-    - jre-openjdk: Java full Runtime Enviroment
     - jdk-openjdk: Java Development Kit
     - ruby: an OO language for quick and easy programming
     - curl: an URL retrieval utility and library
     - git: the fast distributed version control system
-
 - Install some usefull package from AUR (and their dependencies):
     - yay: Pacman wrapper and AUR helper written in go
     - undistract-me: notifies you when long-running terminal commands complete
     - brave-bin: web browser that blocks ads and trackers by default
-
 - Set default user name and email for git
-- Set default pull behaviour as merge
+- Set default pull behaviour to merge
 - Change default shell to zsh. You can find more information at https://www.zsh.org/
 - Install Oh My Zsh, an open source, community-driven framework for managing zsh configuration. You can find more information at https://github.com/ohmyzsh/ohmyzsh
 - Install Powerlevel10k, a theme for zsh. You can find more information at https://github.com/romkatv/powerlevel10k
@@ -97,12 +94,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
     git config --global pull.rebase false
 
     # Change default shell to zsh
-    shell=`printenv | grep SHELL=`
-    if [ $shell = "SHELL=/usr/bin/fish" ]; then
-        chsh -s (which zsh)
-    else
-        chsh -s $(which zsh)
-    fi
+    chsh -s $(which zsh)
 
 else
     echo "\
