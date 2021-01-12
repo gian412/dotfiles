@@ -129,12 +129,12 @@ if (( $+commands[yay]  )); then
 fi
 # Search for a package
 if (( $+commands[pacman]  )); then
-  alias ps='pacman -Ss'                                                         # Search for a package by name
+  alias pf='pacman -Ss'                                                         # Search for a package by name
 elif (( $+commands[apt]  )); then
   alias ps='sudo apt find'
 fi
 if (( $+commands[yay]  )); then
-  alias ys='yay -Ss'
+  alias yf='yay -Ss'
 fi
 # Install
 if (( $+commands[pacman]  )); then
