@@ -1,5 +1,5 @@
 .zshrc
-Script/
+Scripts/
 .config/nvim/init.vim
 .config/i3/config
 .config/i3/config.bak
