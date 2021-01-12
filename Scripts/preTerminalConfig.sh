@@ -96,6 +96,14 @@ elif [ $isInstallationConfirmed = "y" ]; then
     # Change default shell to zsh
     chsh -s $(which zsh)
 
+    # Download and install Oh My Zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # Download and install Powerlevel10k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' test.txt
+
+
 else
     echo "\
 Unrecognised user input: $isInstallationConfirmed
