@@ -5,7 +5,7 @@ echo "\
 Hello $(whoami)!
 This script is the first of a serie of two. It will do the following for you:
 - Full system update
-- Install some usefull package (and their dependencies):
+- Install some package (and their dependencies):
     - zsh: advanced and programmable shell
     - most: a terminal pager
     - flameshot: a powerful yet simple to use screenshot software
@@ -17,16 +17,18 @@ This script is the first of a serie of two. It will do the following for you:
     - curl: an URL retrieval utility and library
     - git: the fast distributed version control system
     - thunderbird: Standalone mail and news reader from mozilla.org
-- Install some usefull package from AUR (and their dependencies):
+- Install some package from AUR (and their dependencies):
     - yay: Pacman wrapper and AUR helper written in go
     - undistract-me: notifies you when long-running terminal commands complete
     - brave-bin: web browser that blocks ads and trackers by default
+- Install a ruby gem:
+    - colorls: a Ruby CLI gem that beautifies the terminal's ls command, with color and font-awesome icons
 - Set default user name and email for git
 - Set default pull behaviour to merge
 - Change default shell to zsh. You can find more information at https://www.zsh.org/
 - Install Oh My Zsh, an open source, community-driven framework for managing zsh configuration. You can find more information at https://github.com/ohmyzsh/ohmyzsh
 - Install Powerlevel10k, a theme for zsh. You can find more information at https://github.com/romkatv/powerlevel10k
-Should the script start the installation [y/n]?"
+Should the script start the installation? [y/n]"
 
 read isInstallationConfirmed
 
@@ -91,6 +93,13 @@ elif [ $isInstallationConfirmed = "y" ]; then
         yay -S $packagesToInstallAUR
     else
         echo "Nothing to install from AUR."
+    fi
+
+    # Check if colorls is installed, otherwise install it
+    if ! command -v "colorls" &> /dev/null; then
+        gem install colorls
+    else
+        echo "No ruby gem to install"
     fi
 
     echo "Changing default shell to zsh..."
