@@ -77,7 +77,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
         cd /opt
         echo "sudo git clone https://aur.archlinux.org/yay-git.git"
         sudo git clone https://aur.archlinux.org/yay-git.git
-        echo "sudo chown -R $USER:$USER yay.git/"
+        echo "sudo chown -R $USER:$USER yay-git/"
         sudo chown -R $USER:$USER yay.git/
         echo "cd yay-git"
         cd yay-git
