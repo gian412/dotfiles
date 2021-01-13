@@ -81,8 +81,8 @@ elif [ $isInstallationConfirmed = "y" ]; then
         sudo chown -R $USER:$USER yay-git/
         echo "cd yay-git"
         cd yay-git
-        echo "makepkg -si"
-        makepkg -si
+        echo "sudo makepkg -si"
+        sudo makepkg -si
     fi
 
     packagesAur=""
