@@ -4,6 +4,7 @@
 echo "\
 Hello $(whoami)!
 This script is the first of a serie of two. It will do the following for you:
+- Full system update
 - Install some usefull package (and their dependencies):
     - zsh: advanced and programmable shell
     - most: a terminal pager
@@ -33,6 +34,13 @@ if [ $isInstallationConfirmed = "n" ]; then
     echo "Nothing won't be installed"
 elif [ $isInstallationConfirmed = "y" ]; then
     echo "Starting installation..."
+
+    # Update system
+    if ! command -v "yay" &> /dev/null; then
+        yay
+    else
+        sudo pacman -Syu
+    fi
 
     # Check for absent packages from Pacman
     packages=("zsh" "most" "flameshot" "chromium" "npm" "ruby" "curl" "git" "thunderbird")
