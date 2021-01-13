@@ -6,6 +6,8 @@ Hello $(whoami)!
 This script is the first of a serie of two. It will do the following for you:
 - Full system update
 - Install some package (and their dependencies):
+    - base
+    - base-devel
     - zsh: advanced and programmable shell
     - most: a terminal pager
     - flameshot: a powerful yet simple to use screenshot software
@@ -49,27 +51,8 @@ elif [ $isInstallationConfirmed = "y" ]; then
     fi
 
     # Check for absent packages from Pacman
-    packages=("zsh" "most" "flameshot" "chromium" "npm" "ruby" "curl" "git" "thunderbird")
-    packagesToInstall=""
-
-    for pkg in ${packages[@]}; do
-        if ! command -v ${pkg} &> /dev/null; then
-            echo "${pkg} could not be found"
-            packagesToInstall="$packagesToInstall ${pkg}"
-        fi
-    done
-
-    if ! command -v "javac" &> /dev/null; then
-        packagesToInstall="$packagesToInstall jdk-openjdk"
-    fi
-
-    # If there is any absent package, install it
-    if [ -n "$packagesToInstall" ]; then
-        echo "sudo pacman -S $packagesToInstall"
-        sudo pacman -S $packagesToInstall
-    else
-        echo "Nothing to install from Pacman."
-    fi
+    echo "sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird"
+    sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird
 
     # Check if yay is installed, otherwise install it
     if ! command -v "yay" &> /dev/null; then
@@ -81,33 +64,13 @@ elif [ $isInstallationConfirmed = "y" ]; then
         sudo chown -R $USER:$USER yay-git/
         echo "cd yay-git"
         cd yay-git
-        echo "sudo makepkg -si"
-        sudo makepkg -si
+        echo "makepkg -si"
+        makepkg -si
     fi
-
-    packagesAur=""
 
     # Check for absent packages from AUR
-    if ! test -f "/usr/share/undistract-me/long-running.bash"; then
-        packagesToInstallAUR="$packagesToInstallAUR undistract-me"
-    fi
-
-
-    if ! command -v "brave" &> /dev/null; then
-        packagesToInstallAUR="$packagesToInstallAUR brave-bin"
-    fi
-
-    if ! command -v "code" & /dev/null; then
-        packagesToInstallAUR="$packagesToInstallAUR visual-studio-code-bin"
-    fi
-
-    # If there is any absent package , install it
-    if [ -n "$packagesToInstallAUR" ]; then
-        echo "yay -S $packagesToInstallAUR"
-        yay -S $packagesToInstallAUR
-    else
-        echo "Nothing to install from AUR."
-    fi
+    echo "yay -S --needed undistract-me brave-bin visual-studio-code-bin"
+    yay -S --needed undistract-me brave-bin visual-studio-code-bin
 
     # Check if colorls is installed, otherwise install it
     if ! command -v "colorls" &> /dev/null; then
@@ -117,9 +80,8 @@ elif [ $isInstallationConfirmed = "y" ]; then
         echo "No ruby gem to install"
     fi
 
-    echo "Changing default shell to zsh..."
-
     # Set default user name and email for git
+    echo "Setting git..."
     echo "Enter Git user name:"
     read gitUserName
     echo "Enter Git email:"
@@ -133,6 +95,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
     git config --global pull.rebase false
 
     # Change default shell to zsh
+    echo "Changing default shell to zsh..."
     echo "chsh -s \$(which zsh)"
     chsh -s $(which zsh)
 
