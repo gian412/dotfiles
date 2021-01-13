@@ -35,6 +35,9 @@ if [ $isInstallationConfirmed = "n" ]; then
 elif [ $isInstallationConfirmed = "y" ]; then
     echo "Starting installation..."
 
+    # Move to home folder
+    cd $HOME
+
     # Update system
     if ! command -v "yay" &> /dev/null; then
         yay
