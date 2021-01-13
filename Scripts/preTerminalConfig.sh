@@ -44,6 +44,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
     cd $HOME
 
     # Update system
+    echo "sudo pacman -Syu"
     sudo pacman -Syu
 
     # Check for absent packages from Pacman
