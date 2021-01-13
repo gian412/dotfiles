@@ -15,6 +15,7 @@ This script is the first of a serie of two. It will do the following for you:
     - ruby: an OO language for quick and easy programming
     - curl: an URL retrieval utility and library
     - git: the fast distributed version control system
+    - thunderbird: Standalone mail and news reader from mozilla.org
 - Install some usefull package from AUR (and their dependencies):
     - yay: Pacman wrapper and AUR helper written in go
     - undistract-me: notifies you when long-running terminal commands complete
@@ -34,7 +35,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
     echo "Starting installation..."
 
     # Check for absent packages from Pacman
-    packages=("zsh" "most" "flameshot" "chromium" "npm" "ruby" "curl" "git")
+    packages=("zsh" "most" "flameshot" "chromium" "npm" "ruby" "curl" "git" "thunderbird")
     packagesToInstall=""
 
     for pkg in ${packages[@]}; do
@@ -101,7 +102,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
 
     # Download and install Powerlevel10k
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' test.txt
+    sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc
 
 
 else
