@@ -44,11 +44,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
     cd $HOME
 
     # Update system
-    if ! command -v "yay" &> /dev/null; then
-        yay
-    else
-        sudo pacman -Syu
-    fi
+    sudo pacman -Syu
 
     # Check for absent packages from Pacman
     echo "sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird"
