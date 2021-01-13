@@ -21,6 +21,7 @@ This script is the first of a serie of two. It will do the following for you:
     - yay: Pacman wrapper and AUR helper written in go
     - undistract-me: notifies you when long-running terminal commands complete
     - brave-bin: web browser that blocks ads and trackers by default
+    - visual-studio-code-bin: editor for building and debugging modern web and cloud applications
 - Install a ruby gem:
     - colorls: a Ruby CLI gem that beautifies the terminal's ls command, with color and font-awesome icons
 - Set default user name and email for git
@@ -84,6 +85,8 @@ elif [ $isInstallationConfirmed = "y" ]; then
         makepkg -si
     fi
 
+    packagesAur=""
+
     # Check for absent packages from AUR
     if ! test -f "/usr/share/undistract-me/long-running.bash"; then
         packagesToInstallAUR="$packagesToInstallAUR undistract-me"
@@ -92,6 +95,10 @@ elif [ $isInstallationConfirmed = "y" ]; then
 
     if ! command -v "brave" &> /dev/null; then
         packagesToInstallAUR="$packagesToInstallAUR brave-bin"
+    fi
+
+    if ! command -v "code" & /dev/null; then
+        packagesToInstallAUR="$packagesToInstallAUR visual-studio-code-bin"
     fi
 
     # If there is any absent package , install it
