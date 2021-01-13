@@ -64,6 +64,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
 
     # If there is any absent package, install it
     if [ -n "$packagesToInstall" ]; then
+        echo "sudo pacman -S $packagesToInstall"
         sudo pacman -S $packagesToInstall
     else
         echo "Nothing to install from Pacman."
@@ -71,10 +72,15 @@ elif [ $isInstallationConfirmed = "y" ]; then
 
     # Check if yay is installed, otherwise install it
     if ! command -v "yay" &> /dev/null; then
+        echo "cd /opt"
         cd /opt
+        echo "sudo git clone https://aur.archlinux.org/yay-git.git"
         sudo git clone https://aur.archlinux.org/yay-git.git
+        echo "sudo chown -R $USER:$USER yay.git/"
         sudo chown -R $USER:$USER yay.git/
+        echo "cd yay-git"
         cd yay-git
+        echo "makepkg -si"
         makepkg -si
     fi
 
@@ -90,6 +96,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
 
     # If there is any absent package , install it
     if [ -n "$packagesToInstallAUR" ]; then
+        echo "yay -S $packagesToInstallAUR"
         yay -S $packagesToInstallAUR
     else
         echo "Nothing to install from AUR."
@@ -97,6 +104,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
 
     # Check if colorls is installed, otherwise install it
     if ! command -v "colorls" &> /dev/null; then
+        echo "gem install colorls"
         gem install colorls
     else
         echo "No ruby gem to install"
@@ -110,18 +118,25 @@ elif [ $isInstallationConfirmed = "y" ]; then
     echo "Enter Git email:"
     read gitEmail
 
+    echo "git config --global user.name $gitUserName"
     git config --global user.name "$gitUserName"
+    echo "git config --global user.email $gitEmail"
     git config --global user.email "$gitEmail"
+    echo "git config --global pull.rebase false"
     git config --global pull.rebase false
 
     # Change default shell to zsh
+    echo "chsh -s \$(which zsh)"
     chsh -s $(which zsh)
 
     # Download and install Oh My Zsh
+    echo "sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     # Download and install Powerlevel10k
+    echo "git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \${ZSH_CUSTOM:-\$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    echo "sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc"
     sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc
 
 
