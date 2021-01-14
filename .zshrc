@@ -112,7 +112,7 @@ export EDITOR='/usr/bin/nvim'
 # ## Alias section
 alias cp="cp -i"                                                                # Confirm before overwriting something
 alias df='df -h'                                                                # Human-readable sizes
-alias free='free -m'                                                            # Show sizes in MB
+alias free='free -hwt'                                                          # Show human-readable units with buff and cache on two column and a total for each column
 alias myip='curl http://ipecho.net/plain; echo'                                 # Find my public IP
 alias distro='cat /etc/*-release'                                               # See information about my distro
 alias reload='source ~/.zshrc'                                                  # Reload terminal
