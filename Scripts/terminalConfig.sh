@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo ":::: \
+echo "\
     ::: Hello $(whoami)!
     ::: This script is the second of a serie of two.
     ::: Have you already run the first script? [y/n]?"
@@ -34,7 +34,7 @@ echo ":::: \
             cd $HOME
 
             # Check if vim-plug is installed, otherwise install it
-            if [[ -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
+            if [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
                 echo ":::: sh -c 'curl -fLo "\${XDG_DATA_HOME:-\$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
                 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
                 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -42,25 +42,25 @@ echo ":::: \
             fi
 
             # Check if zsh-autosuggestions is installed, otherwise install it
-            if [[ -f $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]]; then
+            if [[ ! -f $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]]; then
                 echo ":::: git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
                 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             fi
 
             # Check if autoupdate is installed, otherwise install it
-            if [[ -f $ZSH_CUSTOM/plugins/autoupdate/autoupdate.plugin.zsh ]]; then
+            if [[ ! -f $ZSH_CUSTOM/plugins/autoupdate/autoupdate.plugin.zsh ]]; then
                 echo ":::: git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins \$ZSH_CUSTOM/plugins/autoupdate"
                 git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
             fi
 
             # Check if You Shoul Use is installed, otherwise install it
-            if [[ -f $ZSH_CUSTOM/plugins/you-should-use/you-should-use.plugin.zsh ]]; then
+            if [[ ! -f $ZSH_CUSTOM/plugins/you-should-use/you-should-use.plugin.zsh ]]; then
                 echo ":::: git clone https://github.com/MichaelAquilina/zsh-you-should-use.git \$ZSH_CUSTOM/plugins/you-should-use"
                 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
             fi
 
             # Check if fast-syntax-highlighting is installed, otherwise install it
-            if [[ -f $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
+            if [[ ! -f $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
                 echo ":::: git clone https://github.com/zdharma/fast-syntax-highlighting.git \
                 \${ZSH_CUSTOM:-\$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting"
                 git clone https://github.com/zdharma/fast-syntax-highlighting.git \
@@ -68,7 +68,7 @@ echo ":::: \
             fi
 
             # Check if dotfiles-plugin is installed, otherwise install it
-            if [[ -f $ZSH_CUSTOM/plugins/dotfiles/dotfiles.plugin.zsh ]]; then
+            if [[ ! -f $ZSH_CUSTOM/plugins/dotfiles/dotfiles.plugin.zsh ]]; then
                 echo ":::: git clone https://github.com/vladmyr/dotfiles-plugin.git \$ZSH_CUSTOM/plugins/dotfiles"
                 git clone https://github.com/vladmyr/dotfiles-plugin.git $ZSH_CUSTOM/plugins/dotfiles
                 echo ":::: sh <(curl -sL https://raw.githubusercontent.com/vladmyr/dotfiles-plugin/master/install.sh)"
@@ -76,7 +76,7 @@ echo ":::: \
             fi
 
             # Check if web-search is installed, otherwise install it
-            if [[ -f $ZSH_CUSTOM/plugins/web-search/web_search.dotfiles.plugin.zsh ]]; then
+            if [[ ! -f $ZSH_CUSTOM/plugins/web-search/web_search.dotfiles.plugin.zsh ]]; then
                 echo ":::: git clone https://github.com/sinetoami/web-search.git \"\$ZSH_CUSTOM/plugins/web-search\""
                 git clone https://github.com/sinetoami/web-search.git "$ZSH_CUSTOM/plugins/web-search"
             fi
@@ -111,7 +111,7 @@ echo ":::: \
             echo ":::: source $HOME/.zshrc"
             source $HOME/.zshrc
         else
-            echo ":::: \
+            echo "\
                 :::: Unrecognised user input: $isInstallationConfirmed
                 :::: Script terminated.
                 "
