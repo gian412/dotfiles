@@ -88,9 +88,9 @@ echo "\
             source $HOME/.zshrc
 
             echo ":: Do you want to use the script creator repository? [y/n]"
-            read input
+            read repoChoice
 
-            if [ $input = "y"]; then
+            if [ $repoChoice= "y"]; then
                 repository=https://github.com/gian412/dotfiles.git
             else
                 echo ":: Insert the URL to clone the repository"
