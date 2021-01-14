@@ -44,66 +44,66 @@ elif [ $isInstallationConfirmed = "y" ]; then
     cd $HOME
 
     # Update system
-    echo "sudo pacman -Syu"
+    echo ":: sudo pacman -Syu"
     sudo pacman -Syu
 
     # Check for absent packages from Pacman
-    echo "sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird"
+    echo ":: sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird"
     sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird
 
     # Check if yay is installed, otherwise install it
     if ! command -v "yay" &> /dev/null; then
-        echo "cd /opt"
+        echo "c:: d /opt"
         cd /opt
-        echo "sudo git clone https://aur.archlinux.org/yay-git.git"
+        echo ":: sudo git clone https://aur.archlinux.org/yay-git.git"
         sudo git clone https://aur.archlinux.org/yay-git.git
-        echo "sudo chown -R $USER:$USER yay-git/"
+        echo ":: sudo chown -R $USER:$USER yay-git/"
         sudo chown -R $USER:$USER yay-git/
-        echo "cd yay-git"
+        echo ":: cd yay-git"
         cd yay-git
-        echo "makepkg -si"
+        echo ":: makepkg -si"
         makepkg -si
     fi
 
     # Check for absent packages from AUR
-    echo "yay -S --needed undistract-me brave-bin visual-studio-code-bin"
+    echo ":: yay -S --needed undistract-me brave-bin visual-studio-code-bin"
     yay -S --needed undistract-me brave-bin visual-studio-code-bin
 
     # Check if colorls is installed, otherwise install it
     if ! command -v "colorls" &> /dev/null; then
-        echo "gem install colorls"
+        echo ":: gem install colorls"
         gem install colorls
     else
-        echo "No ruby gem to install"
+        echo ":: No ruby gem to install"
     fi
 
     # Set default user name and email for git
-    echo "Setting git..."
-    echo "Enter Git user name:"
+    echo ":: Setting git..."
+    echo ":: Enter Git user name:"
     read gitUserName
-    echo "Enter Git email:"
+    echo ":: Enter Git email:"
     read gitEmail
 
-    echo "git config --global user.name $gitUserName"
+    echo ":: git config --global user.name $gitUserName"
     git config --global user.name "$gitUserName"
-    echo "git config --global user.email $gitEmail"
+    echo ":: git config --global user.email $gitEmail"
     git config --global user.email "$gitEmail"
-    echo "git config --global pull.rebase false"
+    echo ":: git config --global pull.rebase false"
     git config --global pull.rebase false
 
     # Change default shell to zsh
-    echo "Changing default shell to zsh..."
-    echo "chsh -s \$(which zsh)"
+    echo ":: Changing default shell to zsh..."
+    echo ":: chsh -s \$(which zsh)"
     chsh -s $(which zsh)
 
     # Download and install Oh My Zsh
-    echo "sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
+    echo ":: sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     # Download and install Powerlevel10k
-    echo "git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \${ZSH_CUSTOM:-\$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+    echo ":: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \${ZSH_CUSTOM:-\$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    echo "sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc"
+    echo ":: sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc"
     sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc
 
 
