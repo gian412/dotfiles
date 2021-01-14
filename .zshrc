@@ -179,6 +179,9 @@ alias runc='./main'
 # Display man pages in color
 export PAGER="most"
 
+# My git base URL
+export MYGIT="https://github.com/gian412"
+
 # Python interactive startup file
 export PYTHONSTARTUP=$HOME/.pyrc
 
