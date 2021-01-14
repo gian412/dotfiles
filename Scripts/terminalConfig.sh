@@ -67,18 +67,18 @@ echo "\
                 ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
             fi
 
+            # Check if web-search is installed, otherwise install it
+            if [[ ! -f $ZSH_CUSTOM/plugins/web-search/web_search.dotfiles.plugin.zsh ]]; then
+                echo ":::: git clone https://github.com/sinetoami/web-search.git \"\$ZSH_CUSTOM/plugins/web-search\""
+                git clone https://github.com/sinetoami/web-search.git "$ZSH_CUSTOM/plugins/web-search"
+            fi
+
             # Check if dotfiles-plugin is installed, otherwise install it
             if [[ ! -f $ZSH_CUSTOM/plugins/dotfiles/dotfiles.plugin.zsh ]]; then
                 echo ":::: git clone https://github.com/vladmyr/dotfiles-plugin.git \$ZSH_CUSTOM/plugins/dotfiles"
                 git clone https://github.com/vladmyr/dotfiles-plugin.git $ZSH_CUSTOM/plugins/dotfiles
                 echo ":::: sh <(curl -sL https://raw.githubusercontent.com/vladmyr/dotfiles-plugin/master/install.sh)"
                 sh <(curl -sL https://raw.githubusercontent.com/vladmyr/dotfiles-plugin/master/install.sh)
-            fi
-
-            # Check if web-search is installed, otherwise install it
-            if [[ ! -f $ZSH_CUSTOM/plugins/web-search/web_search.dotfiles.plugin.zsh ]]; then
-                echo ":::: git clone https://github.com/sinetoami/web-search.git \"\$ZSH_CUSTOM/plugins/web-search\""
-                git clone https://github.com/sinetoami/web-search.git "$ZSH_CUSTOM/plugins/web-search"
             fi
 
             # Set the dotfiles repository
