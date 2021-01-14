@@ -3,7 +3,8 @@
 # TODO: Check wich shell is in use.
 echo "\
 Hello $(whoami)!
-This script is the first of a serie of two. It will do the following for you:
+This script is the first of a serie of three. It will do the following for you:
+
 - Full system update
 - Install some package (and their dependencies):
     - base
@@ -29,8 +30,7 @@ This script is the first of a serie of two. It will do the following for you:
 - Set default user name and email for git
 - Set default pull behaviour to merge
 - Change default shell to zsh. You can find more information at https://www.zsh.org/
-- Install Oh My Zsh, an open source, community-driven framework for managing zsh configuration. You can find more information at https://github.com/ohmyzsh/ohmyzsh
-- Install Powerlevel10k, a theme for zsh. You can find more information at https://github.com/romkatv/powerlevel10k
+
 Should the script start the installation? [y/n]"
 
 read isInstallationConfirmed
@@ -95,16 +95,12 @@ elif [ $isInstallationConfirmed = "y" ]; then
     echo ":: Changing default shell to zsh..."
     echo ":: chsh -s \$(which zsh)"
     chsh -s $(which zsh)
-
-    # Download and install Oh My Zsh
-    echo ":: sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-    # Download and install Powerlevel10k
-    echo ":: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \${ZSH_CUSTOM:-\$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    echo ":: sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc"
-    sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc
+    
+    echo "\
+    
+    Reboot your system and you will have zsh as your default shell.
+    After the reboot, run the second script.
+    See you later!"
 
 
 else
