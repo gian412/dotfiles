@@ -53,6 +53,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'theprimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'gruvbox-community/gruvbox'
 Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-commentary'
 
 "  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
 "  TOOOOOOOOOOOOO
