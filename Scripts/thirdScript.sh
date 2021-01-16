@@ -54,13 +54,13 @@ echo "\
             # Check if autoupdate is installed, otherwise install it
             if [[ ! -f $ZSH_CUSTOM/plugins/autoupdate/autoupdate.plugin.zsh ]]; then
                 echo ":: git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autoupdate"
-                git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
+                git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autoupdate
             fi
 
             # Check if You Shoul Use is installed, otherwise install it
             if [[ ! -f $ZSH_CUSTOM/plugins/you-should-use/you-should-use.plugin.zsh ]]; then
                 echo ":: git clone https://github.com/MichaelAquilina/zsh-you-should-use.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use"
-                git clone https://github.com/MichaelAquilina/zsh-you-should-use.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
+                git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
             fi
 
             # Check if fast-syntax-highlighting is installed, otherwise install it
@@ -69,19 +69,19 @@ echo "\
                 :: git clone https://github.com/zdharma/fast-syntax-highlighting.git \
                 :: \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting"
                 git clone https://github.com/zdharma/fast-syntax-highlighting.git \
-                \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+                ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
             fi
 
             # Check if web-search is installed, otherwise install it
             if [[ ! -f $ZSH_CUSTOM/plugins/web-search/web_search.dotfiles.plugin.zsh ]]; then
                 echo ":: git clone https://github.com/sinetoami/web-search.git \"\${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/web-search\""
-                git clone https://github.com/sinetoami/web-search.git "\${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/web-search"
+                git clone https://github.com/sinetoami/web-search.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/web-search"
             fi
 
             # Check if dotfiles-plugin is installed, otherwise install it
             if [[ ! -f $ZSH_CUSTOM/plugins/dotfiles/dotfiles.plugin.zsh ]]; then
-                echo ":: git clone https://github.com/vladmyr/dotfiles-plugin.git \$ZSH_CUSTOM/plugins/dotfiles"
-                git clone https://github.com/vladmyr/dotfiles-plugin.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/dotfiles
+                echo ":: git clone https://github.com/vladmyr/dotfiles-plugin.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/dotfiles"
+                git clone https://github.com/vladmyr/dotfiles-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/dotfiles
                 echo ":: sh <(curl -sL https://raw.githubusercontent.com/vladmyr/dotfiles-plugin/master/install.sh)"
                 sh <(curl -sL https://raw.githubusercontent.com/vladmyr/dotfiles-plugin/master/install.sh)
             fi
