@@ -96,7 +96,11 @@ elif [ $isInstallationConfirmed = "y" ]; then
     echo ":: Changing default shell to zsh..."
     echo ":: chsh -s \$(which zsh)"
     chsh -s $(which zsh)
-
+    
+    # Download and install Oh My Zsh
+    echo ":: sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    
     echo "\
 
     Reboot your system and you will have zsh as your default shell.

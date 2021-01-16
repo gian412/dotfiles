@@ -54,7 +54,7 @@ echo "\
             # Check if autoupdate is installed, otherwise install it
             if [[ ! -f $ZSH_CUSTOM/plugins/autoupdate/autoupdate.plugin.zsh ]]; then
                 echo ":: git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autoupdate"
-                git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
+                git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autoupdate
             fi
 
             # Check if You Shoul Use is installed, otherwise install it
