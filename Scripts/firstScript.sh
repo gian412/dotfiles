@@ -10,6 +10,7 @@ This script is the first of a serie of four. It will do the following for you:
     - base
     - base-devel
     - zsh: advanced and programmable shell
+    - neovim: fork of Vim aiming to improve user experience, plugins, and GUIs
     - most: a terminal pager
     - flameshot: a powerful yet simple to use screenshot software
     - chromium: a web browser built for speed, simplicity, and security
@@ -48,7 +49,7 @@ elif [ $isInstallationConfirmed = "y" ]; then
     sudo pacman -Syu
 
     # Check for absent packages from Pacman
-    echo ":: sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird"
+    echo ":: sudo pacman -S --needed base base-devel zsh neovim most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird"
     sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird
 
     # Check if yay is installed, otherwise install it
