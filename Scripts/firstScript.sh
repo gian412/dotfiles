@@ -3,7 +3,7 @@
 # TODO: Check wich shell is in use.
 echo "\
 Hello $(whoami)!
-This script is the first of a serie of three. It will do the following for you:
+This script is the first of a serie of four. It will do the following for you:
 
 - Full system update
 - Install some package (and their dependencies):
@@ -95,9 +95,9 @@ elif [ $isInstallationConfirmed = "y" ]; then
     echo ":: Changing default shell to zsh..."
     echo ":: chsh -s \$(which zsh)"
     chsh -s $(which zsh)
-    
+
     echo "\
-    
+
     Reboot your system and you will have zsh as your default shell.
     After the reboot, run the second script.
     See you later!"

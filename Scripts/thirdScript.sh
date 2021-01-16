@@ -2,7 +2,7 @@
 
 echo "\
     Hello $(whoami)!
-    This script is the third of a serie of three.
+    This script is the third of a serie of four.
     Have you already run the first two scripts? [y/n]"
 
     read input
@@ -14,7 +14,7 @@ echo "\
 
     echo "\
     This script will do the following for you:
-    
+
     - Clone some usefull repository:
         - vim-plug (neovim installation): a minimalist Vim plugin manager. https://github.com/junegunn/vim-plug
         - zsh-autosuggestions: fish-like fast/unobtrusive autosuggestions for zsh.https://github.com/zsh-users/zsh-autosuggestions
@@ -24,7 +24,7 @@ echo "\
         - dotfiles-plugin: an Oh My Zsh plugin to keep your dotfines in sync across multiple PCs using Git. https://github.com/vladmyr/dotfiles-plugin
         - web-search: a plugin that allow aliases for searching from terminal with some popular web search engines. https://github.com/sinetoami/web-search
         - dotfiles: my dotfiles. https://github.com/gian412/dotfiles
-        
+
     Should the script start the installation? [y/n]?"
 
         read isInstallationConfirmed
@@ -89,7 +89,7 @@ echo "\
             # Set the dotfiles repository
             echo ":: sed -i -e 's/plugins=(git)/plugins=(git dotfiles)/g' \$HOME/.zshrc"
             sed -i -e 's/plugins=(git)/plugins=(git dotfiles)/g' $HOME/.zshrc
-            
+
         else
             echo "\
                 Unrecognised user input: $isInstallationConfirmed

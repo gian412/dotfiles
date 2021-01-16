@@ -2,7 +2,7 @@
 
 echo "\
 Hello $(whoami)!
-This script is the second of a serie of three.
+This script is the second of a serie of four.
 Have you already run the first script? [y/n]"
 
     read input
@@ -20,8 +20,8 @@ This script will do the following for you:
 
 Should the script start the installation? [y/n]"
 
-read scriptChoice
-if [ $scriptChoice = "y" ]; then
+read isInstallationConfirmed
+if [ $isInstallationConfirmed = "y" ]; then
     # Download and install Oh My Zsh
     echo ":: sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -33,11 +33,11 @@ if [ $scriptChoice = "y" ]; then
     sed -i -e 's/robbyrussell/powerlevel10k\/powerlevel10k/g' ~/.zshrc
 
     echo"\
-    Close your terminal, open it again and you can set your theme.
+    Close your terminal, open it again and you can then set your theme.
     Once your theme is setted, run the third script.
     See you later!"
 
-elif [ $scriptChoice = "n" ]; then
+elif [ $isInstallationConfirmed = "n" ]; then
     echo "Nothing won't be installed"
 else
     echo"\

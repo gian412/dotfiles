@@ -1,5 +1,17 @@
 #!/bin/sh
 
+echo"\
+    Hello $(whoami)!
+    This script is the fourth of a serie of four.
+    Have you already run the first three scripts? [y/n]"
+
+    read input
+
+    if [ $input = "n" ]; then
+        echo "Run them and then come back!"
+        exit
+    fi
+
 echo ":: source \$HOME/.zshrc"
 source $HOME/.zshrc
 
@@ -7,6 +19,8 @@ echo ":: git remote add origin https://github.com/gian412/dotfiles.git"
 git remote add origin $repository
 echo ":: rm .gitinclude .gitignore .zshrc"
 rm .gitinclude .gitignore .zshrc
+echo ":: git pull origin main"
+git pull origin main
 
 # Set up neovim
 echo ":: nvim -c \"PlugInstall\""
