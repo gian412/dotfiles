@@ -55,9 +55,11 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-commentary'
 
-"  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
-"  TOOOOOOOOOOOOO
+" Writing
+" Plug 'rhysd/vim-grammarous'
+Plug 'dpelle/vim-LanguageTool'
 
+" Colors
 Plug 'colepeters/spacemacs-theme.vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
@@ -65,6 +67,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
 
 call plug#end()
+
+let g:languagetool_lang='en-GB'
 
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')

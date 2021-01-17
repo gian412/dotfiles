@@ -116,6 +116,7 @@ alias free='free -hwt'                                                          
 alias myip='curl http://ipecho.net/plain; echo'                                 # Find my public IP
 alias distro='cat /etc/*-release'                                               # See information about my distro
 alias reload='source ~/.zshrc'                                                  # Reload terminal
+alias nvimconfig='nvim ~/.config/nvim/init.vim'
 
 ############## package manager
 # Update && Upgrade
@@ -186,7 +187,7 @@ export MYGIT="https://github.com/gian412"
 export PYTHONSTARTUP=$HOME/.pyrc
 
 # DOTNET - Required
-export PATH="$PATH:/home/YOUR_USER_NAME/.dotnet/tools"
+export PATH="$PATH:/home/gianluca/.dotnet/tools"
 # DOTNET - Optional
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export ASPNETCORE_ENVIRONMENT=Development
