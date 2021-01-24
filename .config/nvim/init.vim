@@ -1,16 +1,18 @@
 syntax on
 
-set guicursor=
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+                  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+                  \,sm:block-blinkwait175-blinkoff150-blinkon175
 set relativenumber
 set nohlsearch
 set hidden
 set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
+set tabstop=4 softtabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
 set nu
-" set nowrap
+set nowrap
 set smartcase
 set noswapfile
 set nobackup
@@ -34,7 +36,7 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-set colorcolumn=80
+set colorcolumn=114
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
@@ -54,6 +56,9 @@ Plug 'theprimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'gruvbox-community/gruvbox'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-commentary'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " Writing
 " Plug 'rhysd/vim-grammarous'
@@ -78,20 +83,20 @@ endif
 let g:gruvbox_invert_selection='0'
 
 " --- vim go (polyglot) settings.
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_auto_sameids = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_function_parameters = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_generate_tags = 1
+" let g:go_highlight_format_strings = 1
+" let g:go_highlight_variable_declarations = 1
+" let g:go_auto_sameids = 1
 
 colorscheme gruvbox
 set background=dark
@@ -110,7 +115,7 @@ let g:netrw_winsize = 25
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
-" **********************************************************autoclose html tags
+" --- autoclose html tags
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 "
