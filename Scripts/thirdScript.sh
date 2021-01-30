@@ -57,7 +57,7 @@ echo "\
                 git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autoupdate
             fi
 
-            # Check if You Shoul Use is installed, otherwise install it
+            # Check if You Should Use is installed, otherwise install it
             if [[ ! -f $ZSH_CUSTOM/plugins/you-should-use/you-should-use.plugin.zsh ]]; then
                 echo ":: git clone https://github.com/MichaelAquilina/zsh-you-should-use.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use"
                 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
@@ -82,8 +82,6 @@ echo "\
             if [[ ! -f $ZSH_CUSTOM/plugins/dotfiles/dotfiles.plugin.zsh ]]; then
                 echo ":: git clone https://github.com/vladmyr/dotfiles-plugin.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/dotfiles"
                 git clone https://github.com/vladmyr/dotfiles-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/dotfiles
-                echo ":: sh <(curl -sL https://raw.githubusercontent.com/vladmyr/dotfiles-plugin/master/install.sh)"
-                sh <(curl -sL https://raw.githubusercontent.com/vladmyr/dotfiles-plugin/master/install.sh)
             fi
 
             # Set the dotfiles repository

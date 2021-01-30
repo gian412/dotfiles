@@ -15,10 +15,16 @@ echo"\
 echo ":: source \$HOME/.zshrc"
 source $HOME/.zshrc
 
+echo ":: cd ~"
+cd ~
+
+echo "rm .zshrc"
+rm .zshrc
+
+echo ":: git init"
+git init
 echo ":: git remote add origin https://github.com/gian412/dotfiles.git"
-git remote add origin $repository
-echo ":: rm .gitinclude .gitignore .zshrc"
-rm .gitinclude .gitignore .zshrc
+git remote add origin https://github.com/gian412/dotfiles.git
 echo ":: git pull origin main"
 git pull origin main
 
