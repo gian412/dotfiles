@@ -158,6 +158,11 @@ let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
 
 
+let g:kite_auto_complete=1
+let g:kite_tab_complete=1
+autocmd CompleteDone * if !pumvisible() | pclose | endif
+
+
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
