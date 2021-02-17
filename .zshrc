@@ -117,6 +117,9 @@ alias myip='curl http://ipecho.net/plain; echo'                                 
 alias distro='cat /etc/*-release'                                               # See information about my distro
 alias reload='source ~/.zshrc'                                                  # Reload terminal
 alias nvimconfig='nvim ~/.config/nvim/init.vim'
+if [ $(hostname) = 'garudadell' ]; then
+  alias sd='cd /run/media/gianluca/SanDisk\ 64G'
+fi
 
 ############## package manager
 # Update && Upgrade
