@@ -112,7 +112,12 @@ export EDITOR='/usr/bin/nvim'
 # ## Alias section
 alias cp="cp -i"                                                                # Confirm before overwriting something
 alias df='df -h'                                                                # Human-readable sizes
+alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'       # Better disk management
 alias free='free -hwt'                                                          # Show human-readable units with buff and cache on two column and a total for each column
+alias htop='top'                                                                # Better system monitor
+alias help='tldr'                                                               # Better man pages
+alias ack='grep'                                                                # Better grep
+alias ping='prettyping -c 8'                                                    # Better ping with count
 alias myip='curl http://ipecho.net/plain; echo'                                 # Find my public IP
 alias distro='cat /etc/*-release'                                               # See information about my distro
 alias reload='source ~/.zshrc'                                                  # Reload terminal
