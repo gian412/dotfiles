@@ -114,7 +114,7 @@ alias cp="cp -i"                                                                
 alias df='df -h'                                                                # Human-readable sizes
 alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'       # Better disk management
 alias free='free -hwt'                                                          # Show human-readable units with buff and cache on two column and a total for each column
-alias htop='top'                                                                # Better system monitor
+alias top='htop'                                                                # Better system monitor
 alias help='tldr'                                                               # Better man pages
 alias ack='grep'                                                                # Better grep
 alias ping='prettyping -c 8'                                                    # Better ping with count
@@ -135,15 +135,20 @@ elif (( $+commands[apt]  )); then
 fi
 if (( $+commands[yay]  )); then
   alias yu='yay'
+elif (( $+commands[apt]  )); then
+  alias yu='sudo apt update && sudo apt upgrade'
 fi
+
 # Search for a package
 if (( $+commands[pacman]  )); then
   alias pf='pacman -Ss'                                                         # Search for a package by name
 elif (( $+commands[apt]  )); then
-  alias ps='sudo apt find'
+  alias pf='sudo apt find'
 fi
 if (( $+commands[yay]  )); then
   alias yf='yay -Ss'
+elif (( $+commands[apt]  )); then
+  alias yf='sudo apt find'
 fi
 # Install
 if (( $+commands[pacman]  )); then
@@ -153,6 +158,8 @@ elif (( $+commands[apt]  )); then
 fi
 if (( $+commands[yay]  )); then
   alias yi='yay -S'                                                             # Refresh package database and update all packages
+elif (( $+commands[apt]  )); then
+  alias yi='sudo apt install'
 fi
 # Uninstall
 if (( $+commands[pacman]  )); then
@@ -162,6 +169,8 @@ elif (( $+commands[apt]  )); then
 fi
 if (( $+commands[yay] )) then
   alias yrm='yay -Rcns'
+elif (( $+commands[apt]  )); then
+  alias yrm='sudo apt remove'
 fi
 # Find orphan packages
 alias pfu='sudo pacman -Qtdq'						                            # Find orphan packages
