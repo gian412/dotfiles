@@ -26,7 +26,7 @@ git init
 echo ":: git remote add origin https://github.com/gian412/dotfiles.git"
 git remote add origin https://github.com/gian412/dotfiles.git
 echo ":: git pull origin main"
-git pull origin main
+git pull origin master
 
 # Set up neovim
 echo ":: nvim -c \"PlugInstall\""

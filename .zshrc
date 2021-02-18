@@ -199,5 +199,7 @@ export PATH="$PATH:/home/gianluca/.dotnet/tools"
 # DOTNET - Optional
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export ASPNETCORE_ENVIRONMENT=Development
-source /usr/share/undistract-me/long-running.bash
-notify_when_long_running_commands_finish_install
+if [ $(hostname) = 'garudadell' ]; then
+  source /usr/share/undistract-me/long-running.bash
+  notify_when_long_running_commands_finish_install
+fi
