@@ -119,6 +119,7 @@ alias help='tldr'                                                               
 alias ack='grep'                                                                # Better grep
 alias ping='prettyping -c 8'                                                    # Better ping with count
 alias myip='curl http://ipecho.net/plain; echo'                                 # Find my public IP
+alias ip='ip --color=auto'
 alias distro='cat /etc/*-release'                                               # See information about my distro
 alias reload='source ~/.zshrc'                                                  # Reload terminal
 alias nvimconfig='nvim ~/.config/nvim/init.vim'
