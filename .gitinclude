@@ -3,7 +3,6 @@ Scripts/
 Templates/
 .config/nvim/init.vim
 .config/i3/config
-.config/i3/config.bak
 .nvimInitFiles/*
 .profile
 .vscodeCProj
