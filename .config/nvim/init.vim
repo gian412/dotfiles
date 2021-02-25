@@ -23,6 +23,8 @@ set termguicolors
 set scrolloff=8
 set noshowmode
 set backspace=indent,eol,start
+set splitbelow
+set splitright
 
 filetype plugin indent on
 
@@ -42,6 +44,9 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
+
+Plug 'fabi1cazenave/suckless.vim' " i3 emulation in vim/neovim
+Plug 'fabi1cazenave/termopen.vim' " Better :term command
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
@@ -74,6 +79,7 @@ Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 let g:languagetool_lang='en-GB'
+let g:suckless_tmap = 1
 
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
@@ -187,6 +193,10 @@ vnoremap K :m '<-2<CR>gv=gv
 nmap <Leader>tu <Plug>BujoChecknormal
 nmap <Leader>th <Plug>BujoAddnormal
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
+
+" termOpen
+nmap <silent> <M-Return>    :call TermOpen()<CR>
+nmap <silent> <M-Backspace> :call TermOpenRanger()<CR>
 
 " Vim with me
 nnoremap <leader>vwm :colorscheme gruvbox<bar>:set background=dark<CR>
