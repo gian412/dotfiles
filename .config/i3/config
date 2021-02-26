@@ -375,7 +375,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # Start a new file browser                                   ($mod+Shift+Enter)
 # bind $mod+Shift+36 exec $(nautilus --no-desktop)
-bind $mod+Shift+36 exec $(urxvt -e ranger)
+bind $mod+Shift+Return exec $(urxvt -e ranger)
 
 # Kill focused window
 bindsym $mod+Shift+q kill
