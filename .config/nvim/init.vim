@@ -38,7 +38,7 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-set colorcolumn=114
+set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
@@ -168,6 +168,10 @@ let g:kite_auto_complete=1
 let g:kite_tab_complete=1
 autocmd CompleteDone * if !pumvisible() | pclose | endif
 
+map U <C-r>
+" Keep selection active when indenting/unindenting
+vmap < <gv
+vmap > >gv
 
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
