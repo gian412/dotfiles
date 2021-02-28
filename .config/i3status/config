@@ -5,7 +5,7 @@ general {
 }
 
 order += "disk /"
-order += "disk /home"
+order += "disk /home/gianluca"
 # order  = "ipv6"
 # order += "run_watch DHCP"
 # order += "run_watch VPN"
@@ -63,7 +63,7 @@ disk "/" {
   format = "/ %avail"
 }
 
-disk /home {
+disk "/home/gianluca" {
   # I have a separate /home partition…
   format = "/home %avail"
 }
