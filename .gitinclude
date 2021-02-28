@@ -1,11 +1,24 @@
+# zsh config
 .zshrc
+
+# Scripts folder
 Scripts/
+
+# Templates folder
 Templates/
+
+# neovim config files (and backup)
 .config/nvim/init.vim
+.config/nvim/init.vim.bak
+.config/nvim/mappings.vim
+.config/nvim/plugins.vim
+
+# i3 config files (and backup)
 .config/i3/config
 .config/i3/config.bak
 .config/i3status/config
-.nvimInitFiles/*
+
+# Misc
 .profile
 .vscodeCProj
 .pyrc
