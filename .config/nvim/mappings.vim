@@ -98,6 +98,11 @@ map U <C-r>
 
 " Make K more consistent with J (J = join, K = split)
 nmap K i<CR><Esc>k$
+
+" Disable pageUp and pageDown kays (bad position in my keyboard)
+map <PageUp> <Left>
+map <PageDown> <Right>
+
 "|  }}}
 
 

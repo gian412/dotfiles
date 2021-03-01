@@ -1,134 +1,103 @@
+#|
+#| File    : ~/.zshrc
+#| Author  : Gianluca Regis <r.gian@protonmail.com>
+#| Source  : https://github.com/gian412/dotfiles
+#| License : WTFPL
+#|
+
+
+#|    Instant prompt                                                         {{{
+#|------------------------------------------------------------------------------
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+#|  }}}
 
+
+#|    Profile                                                                {{{
+#|------------------------------------------------------------------------------
+# Source profile
 source "/home/gianluca/.profile"
+#|  }}}
 
+
+#|    Exports                                                                {{{
+#|------------------------------------------------------------------------------
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/gianluca/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Load zsh theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Set the default editor
+export EDITOR='/usr/bin/nvim'
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Display man pages in color
+export PAGER="most"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# Python interactive startup file
+export PYTHONSTARTUP=$HOME/.pyrc
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# DOTNET - Required
+export PATH="$PATH:/home/gianluca/.dotnet/tools"
+# DOTNET - Optional
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export ASPNETCORE_ENVIRONMENT=Development
+#|  }}}
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+#|    Plugins                                                                {{{
+#|------------------------------------------------------------------------------
 source $(dirname $(gem which colorls))/tab_complete.sh
 plugins=(git zsh-autosuggestions autoupdate you-should-use fast-syntax-highlighting dotfiles web-search)
+#|  }}}
 
+
+#|    oh-my-zsh config                                                       {{{
+#|------------------------------------------------------------------------------
 source $ZSH/oh-my-zsh.sh
+#|  }}}
 
-# User configuration
 
-export EDITOR='/usr/bin/nvim'
-# export MANPATH="/usr/local/man:$MANPATH"
+#|    Alias                                                                  {{{
+#|------------------------------------------------------------------------------
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-# ## Alias section
-alias cp="cp -i"                                                                # Confirm before overwriting something
-alias df='df -h'                                                                # Human-readable sizes
-alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'       # Better disk management
-alias free='free -hwt'                                                          # Show human-readable units with buff and cache on two column and a total for each column
-alias top='htop'                                                                # Better system monitor
-alias help='tldr'                                                               # Better man pages
-alias ack='grep'                                                                # Better grep
-alias ping='prettyping -c 8'                                                    # Better ping with count
-alias myip='curl http://ipecho.net/plain; echo'                                 # Find my public IP
-alias ip='ip --color=auto'
-alias distro='cat /etc/*-release'                                               # See information about my distro
-alias reload='source ~/.zshrc'                                                  # Reload terminal
-alias nvimconfig='nvim ~/.config/nvim/init.vim'
+#|    Generic                                                                {{{
+#|------------------------------------------------------------------------------
+alias cp="cp -i"                                                           # Confirm before overwriting something
+alias df='df -h'                                                           # Human-readable sizes
+alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'  # Better disk management
+alias free='free -hwt'                                                     # Show human-readable units with buff and cache on two column and a total for each column
+alias top='htop'                                                           # Better system monitor
+alias help='tldr'                                                          # Better man pages
+alias grep='ack'                                                           # Better grep
+alias ping='prettyping -c 8'                                               # Better ping with count
+alias myip='curl http://ipecho.net/plain; echo'                            # Find my public IP
+alias ip='ip --color=auto'                                                 # Colorized ip
+alias distro='cat /etc/*-release'                                          # See information about my distro
+alias reload='source ~/.zshrc'                                             # Reload terminal
+alias nvimconfig='nvim ~/.config/nvim/init.vim'                            # Open nvim configuration file
+alias ls='colorls'                                                         # List using colorls by default
+alias l='ls -al'                                                           # List elements
+alias zshconfig='nvim ~/.zshrc'                                            # Open zsh configuration file
+alias v='nvim'							                                               # Map neovim as v
+alias sv='sudo nvim'							                                         # Map sudo neovim as sv
 if [ $(hostname) = 'garudadell' ]; then
   alias sd='cd /run/media/gianluca/SanDisk\ 64G'
 fi
+#|  }}}
 
-############## package manager
-# Update && Upgrade
+#|    Package manager                                                        {{{
+#|------------------------------------------------------------------------------
+
+#|    Update && Upgrade                                                      {{{
+#|------------------------------------------------------------------------------
 if (( $+commands[pacman]  )); then
   alias pu='sudo pacman -Syu'                                                   # Refresh package database and update all packages
 elif (( $+commands[apt]  )); then
@@ -139,8 +108,10 @@ if (( $+commands[yay]  )); then
 elif (( $+commands[apt]  )); then
   alias yu='sudo apt update && sudo apt upgrade'
 fi
+#|  }}}
 
-# Search for a package
+#|    Search for a package                                                   {{{
+#|------------------------------------------------------------------------------
 if (( $+commands[pacman]  )); then
   alias pf='pacman -Ss'                                                         # Search for a package by name
 elif (( $+commands[apt]  )); then
@@ -151,7 +122,10 @@ if (( $+commands[yay]  )); then
 elif (( $+commands[apt]  )); then
   alias yf='sudo apt find'
 fi
-# Install
+#|  }}}
+
+#|    Install a pakage                                                       {{{
+#|------------------------------------------------------------------------------
 if (( $+commands[pacman]  )); then
   alias pi='sudo pacman -S'                                                     # Install package by name
 elif (( $+commands[apt]  )); then
@@ -162,7 +136,10 @@ if (( $+commands[yay]  )); then
 elif (( $+commands[apt]  )); then
   alias yi='sudo apt install'
 fi
-# Uninstall
+#|  }}}
+
+#|    Uninstall a package                                                    {{{
+#|------------------------------------------------------------------------------
 if (( $+commands[pacman]  )); then
   alias prm='sudo pacman -Rcns'                                                 # Uninstall package and his dependencies
 elif (( $+commands[apt]  )); then
@@ -173,42 +150,31 @@ if (( $+commands[yay] )) then
 elif (( $+commands[apt]  )); then
   alias yrm='sudo apt remove'
 fi
-# Find orphan packages
-alias pfu='sudo pacman -Qtdq'						                            # Find orphan packages
+#|  }}}
+
+#|    Find orphan packages                                                   {{{
+#|------------------------------------------------------------------------------
+alias pfu='sudo pacman -Qtdq'						                # Find orphan packages
 #Remove orphan packages
 if (( $+commands[pacman]  )); then
-  alias prmu='sudo pacman -Rns $(pacman -Qtdq)'				                    # Remove orphan packages
+  alias prmu='sudo pacman -Rns $(pacman -Qtdq)'         # Remove orphan packages
 elif (( $+commands[apt]  )); then
   alias prmu='sudo apt autoclean && sudo apt autoremove'
 fi
+#|  }}}
 
-alias ls='colorls'                                                              # List using colorls by default
-alias l='ls -al'                                                                # List elements
-alias zshconfig='nvim ~/.zshrc'                                                 # Open zsh configuration file using neovim
-alias v='nvim'							                                        # Map neovim as v
-alias sv='sudo nvim'							                                # Map sudo neovim as sv
-
-# Develope
+#|    Developement                                                           {{{
+#|------------------------------------------------------------------------------
 alias compilec='gcc -o main main.c'
 alias runc='./main'
+#|  }}}
 
+#|  }}}
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Display man pages in color
-export PAGER="most"
 
-# My git base URL
-export MYGIT="https://github.com/gian412"
-
-# Python interactive startup file
-export PYTHONSTARTUP=$HOME/.pyrc
-
-# DOTNET - Required
-export PATH="$PATH:/home/gianluca/.dotnet/tools"
-# DOTNET - Optional
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export ASPNETCORE_ENVIRONMENT=Development
+# Load undistract-me only on a computer (for WSL2 compatibility)
 if [ $(hostname) = 'garudadell' ]; then
   source /usr/share/undistract-me/long-running.bash
   notify_when_long_running_commands_finish_install
