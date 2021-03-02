@@ -59,7 +59,7 @@ plugins=(git zsh-autosuggestions autoupdate you-should-use fast-syntax-highlight
 #|  }}}
 
 
-#|    oh-my-zsh config                                                       {{{
+#|    Oh my zsh                                                              {{{
 #|------------------------------------------------------------------------------
 source $ZSH/oh-my-zsh.sh
 #|  }}}
@@ -179,3 +179,5 @@ if [ $(hostname) = 'garudadell' ]; then
   source /usr/share/undistract-me/long-running.bash
   notify_when_long_running_commands_finish_install
 fi
+
+# vim: set ft=zsh fdm=marker fmr={{{,}}} fdl=0:
