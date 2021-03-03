@@ -13,9 +13,13 @@ order += "cpu_usage"
 order += "battery 0"
 order += "time"
 
-cpu_usage {
-format = "CPU %usage"
-max_threshold = 75
+wireless wlp0s20f3 {
+  format_up = "(%quality ) %ip"
+  format_down = "W: down"
+}
+
+volume master {
+  format = "♪: %volume"
 }
 
 memory {
@@ -24,9 +28,17 @@ memory {
         format_degraded = "MEMORY: %free"
 }
 
-wireless wlp0s20f3 {
-  format_up = "(%quality ) %ip"
-  format_down = "W: down"
+disk "/" {
+  format = "DISK %avail"
+}
+
+cpu_temperature 5 {
+  format = "T: %degrees °C"
+}
+
+cpu_usage {
+format = "CPU %usage"
+max_threshold = 75
 }
 
 battery 0 {
@@ -48,18 +60,6 @@ battery 0 {
 
 time {
   format = "%H:%M %d-%m"
-}
-
-cpu_temperature 5 {
-  format = "T: %degrees °C"
-}
-
-disk "/" {
-  format = "DISK %avail"
-}
-
-volume master {
-  format = "♪: %volume"
 }
 
 # vim: set ft=config:
