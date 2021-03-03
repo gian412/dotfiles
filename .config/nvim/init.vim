@@ -46,6 +46,8 @@ set textwidth=80    " Max line length
 set colorcolumn=+0  " Highlight the textwidth limit
 set nowrap          " Don't wrap text
 set linebreak       " When breaking, don't break words
+
+autocmd BufRead,BufNewFile   *.md setlocal wrap linebreak
 "|  }}}
 
 
