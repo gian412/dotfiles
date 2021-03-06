@@ -20,6 +20,11 @@ This script is the first of a serie of four. It will do the following for you:
     - ruby: an OO language for quick and easy programming
     - curl: an URL retrieval utility and library
     - git: the fast distributed version control system
+    - ncdu: disk usage analyzer with an ncurses interface
+    - htop: Interactive process viewer
+    - tldr: Command line client for tldr, a collection of simplified and community-driven man pages
+    - ack: A Perl-based grep replacement
+    - prettyping: A ping wrapper making the output prettier
     - thunderbird: Standalone mail and news reader from mozilla.org
 - Install some package from AUR (and their dependencies):
     - yay: Pacman wrapper and AUR helper written in go
@@ -49,8 +54,8 @@ elif [ $isInstallationConfirmed = "y" ]; then
     sudo pacman -Syu
 
     # Check for absent packages from Pacman
-    echo ":: sudo pacman -S --needed base base-devel zsh neovim most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird"
-    sudo pacman -S --needed base base-devel zsh most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git thunderbird
+    echo ":: sudo pacman -S --needed base base-devel zsh neovim most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git ncdu htop tldr ack prettyping thunderbird"
+    sudo pacman -S --needed base base-devel zsh neovim most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git ncdu htop tldr ack prettyping thunderbird
 
     # Check if yay is installed, otherwise install it
     if ! command -v "yay" &> /dev/null; then
@@ -96,11 +101,11 @@ elif [ $isInstallationConfirmed = "y" ]; then
     echo ":: Changing default shell to zsh..."
     echo ":: chsh -s \$(which zsh)"
     chsh -s $(which zsh)
-    
+
     # Download and install Oh My Zsh
     echo ":: sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    
+
     echo "\
 
     Reboot your system and you will have zsh as your default shell.

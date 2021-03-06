@@ -48,6 +48,7 @@ set nowrap          " Don't wrap text
 set linebreak       " When breaking, don't break words
 
 autocmd BufRead,BufNewFile   *.md setlocal wrap textwidth=0 linebreak
+autocmd BufRead,BufNewFile   *.sh setlocal textwidth=0 linebreak
 "|  }}}
 
 
