@@ -15,9 +15,6 @@ echo"\
 echo "::| cd ~"
 cd ~
 
-echo "::| source \$HOME/.zshrc"
-source $HOME/.zshrc
-
 echo "rm .zshrc"
 rm .zshrc
 
