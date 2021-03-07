@@ -89,7 +89,7 @@ alias zshconfig='nvim ~/.zshrc'                                            # Ope
 alias v='nvim'							                                               # Map neovim as v
 alias sv='sudo nvim'							                                         # Map sudo neovim as sv
 if [ $(hostname) = 'garudadell' ]; then
-  alias sd='cd /run/media/gianluca/SanDisk\ 64G'
+  alias sd='cd /run/media/gianluca/gianluca'
 fi
 #|  }}}
 

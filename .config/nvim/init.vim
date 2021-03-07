@@ -85,7 +85,7 @@ set softtabstop=2
 set expandtab
 set smartindent
 set shiftround
-set foldmethod=manual
+set foldmethod=indent
 
 augroup indents
   autocmd FileType ?akefile set noexpandtab
