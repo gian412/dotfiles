@@ -51,7 +51,7 @@ Plug 'Luxed/ayu-vim' " Color schemes
 Plug 'tpope/vim-repeat'      " Enable `.` to repeat mapped actions
 Plug 'tpope/vim-commentary'  " Toggle comments easily
 Plug 'tpope/vim-fugitive'    " A Git wrapper so awesome, it should be illegal
-Plug 'mbbill/undotree'        " Undo tree viewer
+Plug 'mbbill/undotree'       " Undo tree viewer
 "  }}}
 
 call plug#end()
