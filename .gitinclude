@@ -2,11 +2,9 @@
 Scripts/
 Templates/
 .config/nvim/init.vim
-.config/nvim/init.vim.bak
 .config/nvim/mappings.vim
 .config/nvim/plugins.vim
 .config/i3/config
-.config/i3/config.bak
 .config/i3status/config
 .config/i8kmon/i8kmon.conf
 .profile
