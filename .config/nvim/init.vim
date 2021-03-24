@@ -40,9 +40,9 @@ set updatetime=500                  " Write swap if nothing is wrote for 500 ms
 "|  }}}
 
 
-"|    80-characters lines (= Mozilla guidelines)                             {{{
+"|    120-characters lines                                                   {{{
 "-------------------------------------------------------------------------------
-set textwidth=80    " Max line length
+set textwidth=120    " Max line length
 set colorcolumn=+0  " Highlight the textwidth limit
 set nowrap          " Don't wrap text
 set linebreak       " When breaking, don't break words
