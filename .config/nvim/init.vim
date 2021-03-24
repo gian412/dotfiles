@@ -160,6 +160,9 @@ augroup specialFiles
   autocmd FileType markdown  setlocal wrap linebreak fdm=syntax
   autocmd FileType pandoc    setlocal wrap linebreak fdm=syntax
 augroup END
+
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 "  }}}
 
 

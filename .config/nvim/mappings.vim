@@ -67,6 +67,7 @@ nmap <leader>g] <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>gn <Plug>(coc-diagnosti-next-error)
 nnoremap <leader>cr :CocRestart
+nmap <leader>do <Plug>(coc-codeaction)
 "|  }}}
 
 

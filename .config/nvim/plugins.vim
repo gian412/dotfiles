@@ -30,6 +30,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Coc for suggedtions
 Plug 'prettier/vim-prettier', {
       \ 'do': 'npm install',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
 "|  }}}
 
 
