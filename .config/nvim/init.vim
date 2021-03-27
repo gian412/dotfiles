@@ -79,9 +79,9 @@ set showfulltag
 "|    Indentation                                                            {{{
 "|------------------------------------------------------------------------------
 set smarttab " <Tab> inserts blank accordingly to 'shiftwidth'
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set smartindent
 set shiftround

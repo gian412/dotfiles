@@ -44,9 +44,10 @@ Plug 'junegunn/fzf.vim'
 "|  }}}
 
 
-"|    Color schemes                                                          {{{
+"|    Theme                                                                  {{{
 "|------------------------------------------------------------------------------
 Plug 'Luxed/ayu-vim' " Color schemes
+Plug 'Yggdroot/indentLine' " Gliph for indented lines
 "|  }}}
 
 
@@ -152,6 +153,20 @@ let g:ayucolor="mirage" " for mirage version of theme
 " source ~/.vim/plugged/ayu-vim/colors/ayu.vim
 colorscheme ayu
 "|  }}}
+
+
+"|    indentLine config                                                             {{{
+"|------------------------------------------------------------------------------
+let g:indentLine_char = '▏'
+let g:indentLine_first_char = '▏'
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
+let g:indentLine_setColors = 0
+" }}
+"|  }}}
+
+
 "|  }}}
 
 
