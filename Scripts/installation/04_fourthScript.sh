@@ -29,7 +29,7 @@ git pull origin master
 echo "::| nvim -c \"PlugInstall\""
 nvim -c "PlugInstall"
 echo "::| nvim -c \"CocInstall coc-tsserver coc-eslint coc-html coc-css coc-java coc-python\""
-nvim -c "CocInstall coc-tsserver coc-prettier coc-eslint coc-html coc-css coc-java coc-python"
+nvim -c "CocInstall coc-tsserver coc-prettier coc-eslint coc-json coc-html coc-css coc-java coc-python"
 
 echo "::| source $HOME/.zshrc"
 source $HOME/.zshrc
