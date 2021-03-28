@@ -54,7 +54,9 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 #|    Plugins                                                                {{{
 #|------------------------------------------------------------------------------
-source $(dirname $(gem which colorls))/tab_complete.sh
+if [ $(hostname) = 'garudaDellGian' ]; then
+    source $(dirname $(gem which colorls))/tab_complete.sh
+fi
 plugins=(git zsh-autosuggestions autoupdate you-should-use fast-syntax-highlighting dotfiles web-search)
 #|  }}}
 
@@ -83,13 +85,13 @@ alias ip='ip --color=auto'                                                 # Col
 alias distro='cat /etc/*-release'                                          # See information about my distro
 alias reload='source ~/.zshrc'                                             # Reload terminal
 alias nvimconfig='nvim ~/.config/nvim/init.vim'                            # Open nvim configuration file
-alias ls='colorls'                                                         # List using colorls by default
 alias l='ls -al'                                                           # List elements
 alias zshconfig='nvim ~/.zshrc'                                            # Open zsh configuration file
 alias v='nvim'							                                               # Map neovim as v
 alias sv='sudo nvim'							                                         # Map sudo neovim as sv
 if [ $(hostname) = 'garudadell' ]; then
-  alias sd='cd /run/media/gianluca/gianluca'
+    alias ls='colorls'                                                         # List using colorls by default
+    alias sd='cd /run/media/gianluca/gianluca'
 fi
 #|  }}}
 
@@ -176,7 +178,7 @@ alias runc='./main'
 
 
 # Load undistract-me only on a computer (for WSL2 compatibility)
-if [ $(hostname) = 'garudadell' ]; then
+if [ $(hostname) = 'garudaDellGian' ]; then
   source /usr/share/undistract-me/long-running.bash
   notify_when_long_running_commands_finish_install
 fi
