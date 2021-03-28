@@ -154,6 +154,10 @@ let g:ayucolor="mirage" " for mirage version of theme
 colorscheme ayu
 "|  }}}
 
+"|    Coc config                                                             {{{
+"|------------------------------------------------------------------------------
+let g:coc_disable_startup_warning = 1
+" }}
 
 "|    indentLine config                                                             {{{
 "|------------------------------------------------------------------------------
