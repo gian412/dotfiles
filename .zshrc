@@ -32,7 +32,7 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/gianluca/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Load zsh theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
