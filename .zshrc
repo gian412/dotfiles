@@ -20,7 +20,9 @@ fi
 #|    Profile                                                                {{{
 #|------------------------------------------------------------------------------
 # Source profile
-source "/home/gianluca/.profile"
+if [ $(hostname) = 'garudaDellGian' ]; then
+    source "/home/gianluca/.profile"
+fi
 #|  }}}
 
 
