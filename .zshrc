@@ -180,9 +180,9 @@ alias runc='./main'
 
 
 # Load undistract-me only on a computer (for WSL2 compatibility)
-if [ $(hostname) = 'garudaDellGian' ]; then
-  source /usr/share/undistract-me/long-running.bash
-  notify_when_long_running_commands_finish_install
-fi
+# if [ $(hostname) = 'garudaDellGian' ]; then
+#   source /usr/share/undistract-me/long-running.bash
+#   notify_when_long_running_commands_finish_install
+# fi
 
 # vim: set ft=zsh fdm=marker fmr={{{,}}} fdl=0:
