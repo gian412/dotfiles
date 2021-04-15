@@ -59,7 +59,7 @@ export ASPNETCORE_ENVIRONMENT=Development
 if [ $(hostname) = 'garudaDellGian' ]; then
     source $(dirname $(gem which colorls))/tab_complete.sh
 fi
-plugins=(git zsh-autosuggestions autoupdate you-should-use fast-syntax-highlighting dotfiles web-search)
+plugins=(git zsh-autosuggestions autoupdate you-should-use fast-syntax-highlighting dotfiles web-search wakatime)
 #|  }}}
 
 
