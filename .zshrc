@@ -91,7 +91,7 @@ alias l='ls -al'                                                           # Lis
 alias zshconfig='nvim ~/.zshrc'                                            # Open zsh configuration file
 alias v='nvim'							                                               # Map neovim as v
 alias sv='sudo nvim'							                                         # Map sudo neovim as sv
-if [ $(hostname) = 'garudadell' ]; then
+if [ $(hostname) = 'garudaDellGian' ]; then
     alias ls='colorls'                                                         # List using colorls by default
     alias sd='cd /run/media/gianluca/gianluca'
 fi
@@ -186,3 +186,6 @@ alias runc='./main'
 # fi
 
 # vim: set ft=zsh fdm=marker fmr={{{,}}} fdl=0:
+
+# added by travis gem
+[ ! -s /home/gianluca/.travis/travis.sh ] || source /home/gianluca/.travis/travis.sh
