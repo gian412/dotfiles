@@ -33,6 +33,7 @@ Plug 'prettier/vim-prettier', {
 
 Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
 "|  }}}
 
 
@@ -154,10 +155,12 @@ let g:ayucolor="mirage" " for mirage version of theme
 colorscheme ayu
 "|  }}}
 
+
 "|    Coc config                                                             {{{
 "|------------------------------------------------------------------------------
 let g:coc_disable_startup_warning = 1
-" }}
+"| }}}
+
 
 "|    indentLine config                                                             {{{
 "|------------------------------------------------------------------------------
@@ -167,11 +170,15 @@ let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 let g:indentLine_setColors = 0
-" }}
-"|  }}}
+"| }}}
 
 
-"|  }}}
+"|    Emmet config                                                           {{{
+"|------------------------------------------------------------------------------
+let g:user_emmet_mode='a'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+"| }}}
 
 
 " vim: set ft=vim fdm=marker fmr={{{,}}} fdl=0:
