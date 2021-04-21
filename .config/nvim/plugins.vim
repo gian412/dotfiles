@@ -34,6 +34,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
+Plug 'wakatime/vim-wakatime'
 "|  }}}
 
 
