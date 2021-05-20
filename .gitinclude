@@ -7,6 +7,7 @@ Templates/
 .config/i3/config
 .config/i3status/config
 .config/i8kmon/i8kmon.conf
-.profile
+.nvimConfigs/
 .vscodeCProj
+.profile
 .pyrc
