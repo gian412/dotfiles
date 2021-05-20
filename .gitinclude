@@ -1,9 +1,6 @@
 .zshrc
 Scripts/
 Templates/
-.config/nvim/init.vim
-.config/nvim/mappings.vim
-.config/nvim/plugins.vim
 .config/i3/config
 .config/i3status/config
 .config/i8kmon/i8kmon.conf
