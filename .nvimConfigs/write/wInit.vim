@@ -40,7 +40,7 @@ set updatetime=500                  " Write swap if nothing is wrote for 500 ms
 set noerrorbells                    " Disable error bells
 set visualbell                      " Enable visual bell
 set mouse=a                         " Enable mouse
-set formatoptions=ant               " 't'=wrap text on 'textwidth', 'a' turns on the real-time reformatting
+set formatoptions=nt               " 't'=wrap text on 'textwidth', 'a' turns on the real-time reformatting
 set formatoptions+=or               " Keep inserting comment leader character on subsequential lines
 set nopaste	                        " Pasting with auto-indent disabled (breaks bindings in cli vim)
 set nofoldenable                    " No folding
