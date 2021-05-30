@@ -38,6 +38,12 @@ Plug 'Yggdroot/indentLine'  " Gliph for indented lines
 "|  }}}
 
 
+"|    Grammar                                                                {{{
+"|------------------------------------------------------------------------------
+Plug 'rhysd/vim-grammarous'        " Color schemes
+"|  }}}
+
+
 "|    Miscellaneous                                                          {{{
 "|------------------------------------------------------------------------------
 Plug 'tpope/vim-repeat'     " Enable `.` to repeat mapped actions
