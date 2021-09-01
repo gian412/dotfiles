@@ -164,6 +164,8 @@ colorscheme ayu
 
 let g:coc_global_extensions = [
     \ 'coc-tsserver',
+    \ 'coc-eslint',
+    \ 'coc-prettier',
     \ 'coc-json',
     \ 'coc-git',
     \ 'coc-css',
@@ -178,18 +180,18 @@ let g:coc_global_extensions = [
 
 
 
-function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
-    silent call CocActionAsync('doHover')
-  endif
-endfunction
+" function! ShowDocIfNoDiagnostic(timer_id)
+"   if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+"     silent call CocActionAsync('doHover')
+"   endif
+" endfunction
 
-function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
-endfunction
+" function! s:show_hover_doc()
+"   call timer_start(500, 'ShowDocIfNoDiagnostic')
+" endfunction
 
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
+" autocmd CursorHoldI * :call <SID>show_hover_doc()
+" autocmd CursorHold * :call <SID>show_hover_doc()
 
 "| }}}
 
