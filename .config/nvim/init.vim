@@ -37,6 +37,7 @@ set nobackup                        " Disable backup for files changed
 set undodir=~/.config/nvim/undodir  " Enable undo tree
 set undofile                        " Enable undo saving at buffer close
 set updatetime=500                  " Write swap if nothing is wrote for 500 ms
+set foldmethod=syntax               " Fold based on syntax
 "|  }}}
 
 
@@ -157,8 +158,6 @@ augroup END
 "|    Special files                                                          {{{
 augroup specialFiles
   autocmd FileType help      setlocal nonumber nolist foldmethod=marker
-  autocmd FileType markdown  setlocal wrap linebreak fdm=syntax
-  autocmd FileType pandoc    setlocal wrap linebreak fdm=syntax
 augroup END
 
 " Rescan all file on buffer enter for up-to-date syntax highlight
