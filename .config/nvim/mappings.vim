@@ -9,7 +9,10 @@
 " Map Leader
 nmap <Space> <Nop>
 let mapleader = " "
-
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 "|    Folding                                                                {{{
 "|------------------------------------------------------------------------------

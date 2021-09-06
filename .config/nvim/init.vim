@@ -38,6 +38,7 @@ set undodir=~/.config/nvim/undodir  " Enable undo tree
 set undofile                        " Enable undo saving at buffer close
 set updatetime=500                  " Write swap if nothing is wrote for 500 ms
 set foldmethod=syntax               " Fold based on syntax
+set clipboard+=unnamedplus
 "|  }}}
 
 
