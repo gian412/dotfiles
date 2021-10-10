@@ -90,8 +90,7 @@ set shiftround
 set foldmethod=indent
 
 augroup indents
-  autocmd FileType ?akefile set noexpandtab
-  autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType makefile set noexpandtab
 augroup END
 "|  }}}
 

@@ -1,528 +1,332 @@
-#|
-#| File    : ~/.config/i3/config
-#| Charset : UTF-8
-#| Author  : Fabien Cazenave & Gianluca Regis
-#| Original source  : https://github.com/fabi1cazenave/dotFiles
-#| Final source  : https://github.com/gian412/dotfiles
-#| License : WTFPL
-#|
-#| Requires i3 v4.2+, tested with i3 v4.8.
-#| References: /etc/i3/config, http://i3wm.org/docs/userguide.html
-#| Bonus: see PotatoesMaster/i3-vim-syntax for i3 syntax hilighting.
-#|
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-#|    overview                                                              {{{
-#|-----------------------------------------------------------------------------
-# This configuration relies on a single modifier key.
-# It uses keycodes instead of keysyms in order to be compatible with any
-# keyboard layout: qwerty, qwertz, azerty, dvorak…
-#
-# quick config:
-# ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━━┓
-# │     │  w1 │  w2 │  w3 │  w4 │  w5 │  w6 │  w7 │  w8 │  w9 │  w10│  w11│  w12┃          ┃
-# │ `   │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ -   │ =   ┃ ⌫        ┃
-# ┢━━━━━┷━━┱──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┺━━┯━━━━━━━┩
-# ┃        ┃     │close│     │rsize│     │     │ prev│ next│split│start│     │ }   │ |     │
-# ┃ ↹      ┃ q   │ w   │ e   │ r   │ t   │ y   │ u   │ i   │ o   │ p   │ [   │ ]   │ \     │
-# ┣━━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┲━━━━┷━━━━━━━┪
-# ┃         ┃ tab │stack│ div.│ full│     │focus│focus│focus│focus│focus│focus┃            ┃
-# ┃ ⇬       ┃ a   │ s   │ d   │ f   │ g   │ h ← │ j ↓ │ k ↑ │ l → │ ;   │ '   ┃ ⏎          ┃
-# ┣━━━━━━━━━┻━━┱──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┲━━┻━━━━━━━━━━━━┫
-# ┃            ┃     │     │     │     │bordr│     │     │     │     │     ┃               ┃
-# ┃ ⇧          ┃ z   │ x   │ c   │ v   │ b   │ n   │ m   │ ,   │ .   │ /   ┃ ⇧             ┃
-# ┣━━━━━━━┳━━━━┻━━┳━━┷━━━━┱┴─────┴─────┴─────┴─────┴─────┴─┲━━━┷━━━┳━┷━━━━━╋━━━━━━━┳━━━━━━━┫
-# ┃       ┃ *mod* ┃       ┃         tiling/floating toggle ┃       ┃       ┃       ┃       ┃
-# ┃ Ctrl  ┃ super ┃ Alt   ┃ Space                          ┃ AltGr ┃ super ┃ menu  ┃ Ctrl  ┃
-# ┗━━━━━━━┻━━━━━━━┻━━━━━━━┹────────────────────────────────┺━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-#
-# keycodes:
-# ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━━┓
-# │  49 │  10 │  11 │ 12  │  13 │  14 │  15 │  16 │  17 │  18 │  19 │  20 │  21 ┃       22 ┃
-# │ `   │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ -   │ =   ┃ ⌫        ┃
-# ┢━━━━━┷━━┱──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┺━━┯━━━━━━━┩
-# ┃  23    ┃  24 │  25 │  26 │  27 │  28 │  29 │  30 │  31 │  32 │  33 │  34 │  35 │    63 │
-# ┃ ↹      ┃ q   │ w   │ e   │ r   │ t   │ y   │ u   │ i   │ o   │ p   │ [   │ ]   │ \     │
-# ┣━━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┲━━━━┷━━━━━━━┪
-# ┃  66     ┃  38 │  39 │  40 │  41 │  42 │  43 │  44 │  45 │  46 │  47 │  48 ┃         36 ┃
-# ┃ ⇬       ┃ a   │ s   │ d   │ f   │ g   │ h   │ j   │ k   │ l   │ ;   │ '   ┃ ⏎          ┃
-# ┣━━━━━━━━━┻━━┱──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┲━━┻━━━━━━━━━━━━┫
-# ┃  50        ┃  52 │  53 │  54 │  55 │  56 │  57 │  58 │  59 │  60 │  61 ┃            62 ┃
-# ┃ ⇧          ┃ z   │ x   │ c   │ v   │ b   │ n   │ m   │ ,   │ .   │ /   ┃ ⇧             ┃
-# ┣━━━━━━━┳━━━━┻━━┳━━┷━━━━┱┴─────┴─────┴─────┴─────┴─────┴─┲━━━┷━━━┳━┷━━━━━╋━━━━━━━┳━━━━━━━┫
-# ┃  37   ┃  Mod4 ┃  Mod1 ┃                             65 ┃    93 ┃   116 ┃   117 ┃   109 ┃
-# ┃ Ctrl  ┃ super ┃ Alt   ┃ Space                          ┃ AltGr ┃ super ┃ menu  ┃ Ctrl  ┃
-# ┗━━━━━━━┻━━━━━━━┻━━━━━━━┹────────────────────────────────┺━━━━━━━┻━━━━━━━┻━━━━━━━┻━━━━━━━┛
-#
-# }}}
+# set modifier
+set $super Mod4
+set $alt Mod1
 
-#|    general                                                               {{{
-#|-----------------------------------------------------------------------------
+################################
+### Commonly Used Variables: ###
+################################
+# - Below defined are some of the very common variables that users like to customise
+# - For Keybindings search: Commonly Used Keybindings in this document
+# - Make sure that you give the absolute path to the binary / program / executable
+# - You may specify any additional arguments required by the binary / executable
 
-# define your preferred main modifier key: Alt_L (Mod1) or Super_L (Mod4)
-set $mod Mod1
-set $sup Mod1
+### Wallpaper: ###
+# - You need to specify homescreen wallpaper using azote
 
-# use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+set $lockScreenWallpaper /usr/share/wallpapers/garuda-wallpapers/Garuda-Desert.png
 
-# Font for window titles and the status bar. Note: ISO 10646 = Unicode.
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# font -*-fixed-*-r-normal-*-*-120-*-*-*-*-iso8859-*
-# font pango:DejaVu Sans 8
-font pango:monospace 12
+### Applications: ###
 
-# default mode: workspace_layout <default|stacking|tabbed>
-workspace_layout default
+set $preferredTerminalEmulator /usr/bin/alacritty
+set $preferredBrowser /usr/bin/brave
+set $preferredFileManager /usr/bin/thunar
+set $preferredMailClient /usr/bin/geary
+set $preferredTextEditor /usr/bin/nvim
+set $preferredScreenCaptureTool /usr/bin/flameshot gui
 
-# default mode: <normal|1pixel|none>
-new_window 1pixel
-new_float normal
+###########################################
+### Commonly Used Application Keybinds: ###
+###########################################
 
-# Statusline (i3bar)
-bar {
-  status_command i3status
-  position bottom
-  # mode hide
-  mode dock
-}
+bindsym $super+F1 exec $preferredBrowser;focus
+bindsym $super+F2 exec $preferredMailClient;focus
+bindsym $super+F3 exec $preferredFileManager;focus
+bindsym $super+F4 exec $preferredTextEditor;focus
 
-# Default color theme:
-#   class                 border  backgr. text
-# client.focused          #4c7899 #285577 #ffffff
-# client.focused_inactive #333333 #5f676a #ffffff
-# client.unfocused        #333333 #222222 #888888
-# client.urgent           #2f343a #900000 #ffffff
+### Screen Capturing & Print Screen: ###
 
-# Custom color theme:
-#   class                 border  backgr. text
-# client.focused          #2f343a #904040 #ffffff
-# client.focused          #2f343a #602020 #ffffff
-# client.focused          #2f343a #501010 #ffffff
-# client.focused          #2f343a #900000 #ffffff
-client.focused_inactive   #333333 #444444 #ffffff
+bindsym $super+F9 exec $preferredScreenCaptureTool
+bindsym Print exec --no-startup-id $preferredScreenCaptureTool
 
-# }}}
+### Start a Terminal Emulator: ###
+# - You can change the preferredTerminalEmulator variable
+# - alacritty & xfce4-terminal can also be started using their individual keybindings
 
-#|    workspaces                                                            {{{
-#|-----------------------------------------------------------------------------
+bindsym $super+Return exec $preferredTerminalEmulator
 
-# Workspace names:
-# the default modifier being Super_L, workspaces 6 to 12 are preferred
-# (=> left thumb + right hand to select a workspace)
-set $w01  1
-set $w02  2
-set $w03  3
-set $w04  4
-set $w05  5
-set $w06  6
-set $w07  7
-set $w08  8
-set $w09  9
-set $w10 10
-set $w11 11
-set $w12 12
+# set font
+font pango: source code pro 10
 
-# http://i3wm.org/docs/userguide.html#command_criteria (xprop might be useful…)
-# - instance    : window instance = 1st part of WM_CLASS
-# - class       : window class    = 2nd part of WM_CLASS
-# - window_role : window role     = WM_WINDOW_ROLE
-# - title       : X11 window title (_NET_WM_NAME or WM_NAME as fallback)
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
 
-# Common apps are sorted by workspace
-assign [class="^Thunderbird"]          → $w06
-assign [class="^Work$"]                → $w08
-assign [class="^B2g$"]                 → $w09
-assign [class="^VirtualBox"]           → $w10
-assign [class="^Telegram$"]            → $w11
-assign [class="^Pidgin"]               → $w11
-assign [class="^Skype"]                → $w11
-assign [class="^Hotot"]                → $w11
-assign [class="^Vidyo"]                → $w12
-assign [class="^Vlc"]                  → $w12
-assign [class="^Totem"]                → $w12
+#autostart
+exec --no-startup-id ~/.fehbg
+exec --no-startup-id xsettingsd &
+exec_always --no-startup-id ~/Scripts/utils/xMonitorManagement.sh
+exec --no-startup-id pasystray
+exec --no-startup-id conky
+exec --no-startup-id conky -c ~/.config/conky/conky-shcts
+exec --no-startup-id copyq
+exec --no-startup-id dunst
+#exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
+#exec --no-startup-id redshift
+exec --no-startup-id desktop-items
+exec --no-startup-id nm-applet
+exec --no-startup-id pamac-tray
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id xfce4-power-manager
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id setcursor
+#exec_always --no-startup-id ${HOME}/.config/polybar/launch.sh
+exec_always --no-startup-id numlockx on
+exec blueberry-tray
+exec --no-startup-id java -Xmx1024m -jar "/opt/xdman/xdman.jar" -m
 
-# Firefox can be run with a --class argument: (= "Firefox" by default)
-#   https://bugzilla.mozilla.org/show_bug.cgi?id=496653
-#   http://www.chevrel.org/carnet/?post/2012/06/06/Fonctionnement-en-parallele-de-deux-versions-de-Firefox
-# …which allows to use such commands:
-#   firefox -no-remote -profile ~/.mozilla/social --class "social"
-#   firefox -no-remote -profile ~/.mozilla/webdev --class "webdev"
-#   firefox -no-remote -profile ~/.mozilla/zimbra --class "zimbra"
-assign [title="Firefox Developer"]     → $w09
-assign [title="Firefox WebIDE"]        → $w09
-assign [instance="Devtools"]           → $w09
-assign [class="Firefox"]               → $w07
-assign [class="bugzilla"]              → $w08
-assign [class="webdev"]                → $w09
-assign [class="social"]                → $w11
+# hide/unhide i3status bar
+bindsym $super+m bar mode toggle
 
-# }}}
+# start dmenu (a program launcher)
+bindsym $super+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=12'"
+bindsym $super+Shift+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 12'
 
-#|    floating windows                                                      {{{
-#|-----------------------------------------------------------------------------
+# Garuda Linux install
+bindsym $super+i exec sudo -E calamares
 
-# Floating windows should have a border and titlebar (not working?)
-new_float normal
+# Lock screen
+bindsym $super+l exec i3lock -i $lockScreenWallpaper
 
-# Correct handling of floating dialogs
-# https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs
-for_window [window_role="pop-up"]      floating enable border normal
-for_window [window_role="task_dialog"] floating enable border normal
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-# Gnome-Terminal and ROXTerm can be run with a --role argument, e.g.:
-#   roxterm --role=irc -e weechat-curses
-assign [window_role="irc"]             → $w11
-for_window [window_role="OrgMode"]     floating enable border normal
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#change volume
+#bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
+#bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
+#bindsym XF86AudioMute exec pulseaudio-ctl mute
 
-# ROXTerm and URxvt can be run with a -T or --title argument, e.g.:
-#   urxvt -T Org-mode -e vim ~/.notes.org
-# for_window [title="Org-mode"]          floating enable
 
-# This works for Firefox, Thunderbird, and probably a lot of apps
-#for_window [window_role="browser"]     floating enable
-for_window [window_role="About"]       floating enable border normal
-for_window [window_role="Preferences"] floating enable border normal
+# music control
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl prev
+bindsym XF86AudioPlay exec playerctl toggle
+bindsym XF86AudioStop exec playerctl stop
 
-# These windows require a specific rule to be displayed in floating mode:
-#for_window [window_role="^Manager"]    floating enable
-#for_window [instance="^Download"]      floating enable
-for_window [instance="^Update"]        floating enable border normal
-for_window [instance="^gcalctool"]     floating enable border normal
-for_window [instance="^galculator"]    floating enable border normal
-for_window [instance="^gnome-keyring"] floating enable border normal
-for_window [instance="^file_progress"] floating enable border normal
-for_window [title="^Compress"]         floating enable border normal
-for_window [title="^Compression"]      floating enable border normal
-for_window [title="^screenkey"]        floating enable border normal
-for_window [title="^Debconf"]          floating enable border normal
-for_window [class="control-center"]    floating enable border normal
-for_window [class="^Pavucontrol"]      floating enable border normal
-for_window [class="^B2G$"]             floating enable border normal
-for_window [class="^B2g$"]             floating enable border normal
+# Print screen
 
-# }}}
+bindsym $super+Print --release exec --no-startup-id i3-scrot -w
+bindsym $super+Shift+Print --release exec --no-startup-id i3-scrot -s
 
-#|    wmii-like keybindings                                                 {{{
-#|-----------------------------------------------------------------------------
+# kill focused window
+bindsym $super+c kill
+bindsym $super+q kill
 
-# Switch between tAbbed/Stacked/Divided/Fullscreen modes         ($mod+[asdf])
-bind $mod+38 layout tabbed
-bind $mod+39 layout stacked
-bind $mod+40 layout toggle split
-bind $mod+41 fullscreen
+# change focus
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
 
-# Toggle global fullscreen                                       ($mod+shift+f)
-bind $mod+Shift+41 fg
+# move focused window
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
 
-# Switch between tiling/floating layers                            ($mod+Space)
-bind $mod+65 focus mode_toggle
+# split in horizontal orientation
+bindsym $super+h split h
 
-# Send client to tiling/floating layer                       ($mod+Shift+Space)
-bind $mod+Shift+65 floating toggle
+# split in vertical orientation
+bindsym $super+v split v
 
-# Kill current window                                                  ($mod+w)
-bind $mod+25 kill
+# enter fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
 
-# Focus Window, Vim-style                                         ($mod+[hjkl])
-bind $mod+43 focus left
-bind $mod+44 focus down
-bind $mod+45 focus up
-bind $mod+46 focus right
-# Focus Window, using cursor keys                                 ($mod+arrows)
-#bindsym $mod+Left  focus left
-#bindsym $mod+Down  focus down
-#bindsym $mod+Up    focus up
-#bindsym $mod+Right focus right
+# change container layout split
+bindsym $super+s layout toggle split
 
-# Move Focused Window, Vim-style                            ($mod+Shift+[hjkl])
-bind $mod+Shift+43 move left
-bind $mod+Shift+44 move down
-bind $mod+Shift+45 move up
-bind $mod+Shift+46 move right
-# Move Focused Window, using cursor keys                    ($mod+Shift+arrows)
-#bindsym $mod+Shift+Left  move left
-#bindsym $mod+Shift+Down  move down
-#bindsym $mod+Shift+Up    move up
-#bindsym $mod+Shift+Right move right
+# toggle tiling / floating
+bindsym $super+space floating toggle
 
-# Workspaces [1…12]                                       ($mod+[1234567890-=])
-bind $mod+10 workspace $w01
-bind $mod+11 workspace $w02
-bind $mod+12 workspace $w03
-bind $mod+13 workspace $w04
-bind $mod+14 workspace $w05
-bind $mod+15 workspace $w06
-bind $mod+16 workspace $w07
-bind $mod+17 workspace $w08
-bind $mod+18 workspace $w09
-bind $mod+19 workspace $w10
-bind $mod+20 workspace $w11
-bind $mod+21 workspace $w12
+# change focus between tiling / floating windows
+bindsym $super+Shift+space focus mode_toggle
 
-# Move to Workspace [1…12]                          ($mod+Shift+[1234567890-=])
-bind $mod+Shift+10 move workspace $w01
-bind $mod+Shift+11 move workspace $w02
-bind $mod+Shift+12 move workspace $w03
-bind $mod+Shift+13 move workspace $w04
-bind $mod+Shift+14 move workspace $w05
-bind $mod+Shift+15 move workspace $w06
-bind $mod+Shift+16 move workspace $w07
-bind $mod+Shift+17 move workspace $w08
-bind $mod+Shift+18 move workspace $w09
-bind $mod+Shift+19 move workspace $w10
-bind $mod+Shift+20 move workspace $w11
-bind $mod+Shift+21 move workspace $w12
+# switch to Tabbed mode
+# bindsym $super+t layout tabbed --border
 
-# }}}
+# switch to Stacked
+# bindsym $super+g layout stacked
 
-#|    i3-specific keybindings                                               {{{
-#|-----------------------------------------------------------------------------
+# toggle sticky
+bindsym $super+Shift+s sticky toggle
 
-# Resize Containers, Vim-style                            ($mod+Control+[hjkl])
-# see http://bugs.i3wm.org/report/ticket/576
-bind $mod+Control+43 resize shrink right 10 px or 5 ppt
-bind $mod+Control+44 resize grow   down  10 px or 5 ppt
-bind $mod+Control+45 resize shrink down  10 px or 5 ppt
-bind $mod+Control+46 resize grow   right 10 px or 5 ppt
-# Resize Containers, using cursor keys                    ($mod+Control+arrows)
-#bindsym $mod+Control+Left  resize shrink right 10 px or 5 ppt
-#bindsym $mod+Control+Down  resize grow   down  10 px or 5 ppt
-#bindsym $mod+Control+Up    resize shrink down  10 px or 5 ppt
-#bindsym $mod+Control+Right resize grow   right 10 px or 5 ppt
+# focus the parent container
+bindsym $super+a focus parent
 
-# These [hjkl] bindings trigger as soon as you enter the resize mode
-bindsym $mod+r mode "resize"
-mode "resize" {
-  # Vim-style
-  bind 43 resize shrink right 10 px or 5 ppt
-  bind 44 resize grow   down  10 px or 5 ppt
-  bind 45 resize shrink down  10 px or 5 ppt
-  bind 46 resize grow   right 10 px or 5 ppt
-  # cursor keys
-  #bindsym Left  resize shrink right 10 px or 5 ppt
-  #bindsym Down  resize grow   down  10 px or 5 ppt
-  #bindsym Up    resize shrink down  10 px or 5 ppt
-  #bindsym Right resize grow   right 10 px or 5 ppt
+# move the currently focused window to the scratchpad
+bindsym $super+Shift+minus move scratchpad
 
-  # back to normal: Enter or Escape or Space
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym space  mode "default"
-}
-
-# Previous/Next Workspace                                           ($mod+[ui])
-bind $mod+30 workspace prev
-bind $mod+31 workspace next
-
-# Move to previous/Next Workspace                             ($mod+Shift+[ui])
-bind $mod+Shift+30 move window to workspace prev
-bind $mod+Shift+31 move window to workspace next
-
-# Back to last workspace                                               ($mod+')
-bind $mod+48 workspace back_and_forth
-workspace_auto_back_and_forth yes
-
-# Select adjacent output (screen)                                 ($mod+[nm,.])
-bind $mod+57 output left
-bind $mod+58 output down
-bind $mod+59 output up
-bind $mod+60 output right
-
-# Move workspace to adjacent output (screen)                      ($mod+[nm,.])
-bind $mod+Shift+57 move workspace to output left
-bind $mod+Shift+58 move workspace to output down
-bind $mod+Shift+59 move workspace to output up
-bind $mod+Shift+60 move workspace to output right
-
-# Move the currently focused window to the scratchpad                  ($mod+/)
-bind $mod+61 scratchpad show
-
-# Show/hide the scratchpad window                                ($mod+Shift+/)
+# Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bind $mod+Shift+61 move scratchpad
+bindsym $super+minus scratchpad show
 
-# Reload i3 configuration                                        ($mod+Shift+r)
-bind $mod+Shift+27 reload
+#navigate workspaces next / previous
+bindsym $super+Ctrl+Right workspace next
+bindsym $super+Ctrl+Left workspace prev
 
-# Restart i3 inplace                                     ($mod+Shift+BackSpace)
-bind $mod+Shift+22 restart
 
-# Exit i3                                                 ($mod+Ctrl+BackSpace)
-bind $mod+Control+22 exit
-# bind $mod+Control+22 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# switch to workspace
+bindsym $alt+Control+Right workspace next
+bindsym $alt+Control+Left workspace prev
+bindsym $super+1 workspace 1
+bindsym $super+2 workspace 2
+bindsym $super+3 workspace 3
+bindsym $super+4 workspace 4
+bindsym $super+5 workspace 5
+bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8
 
-# Split (horizontal/vertical)                                  ($mod[+Shift]+o)
-bind $mod+32       split v
-bind $mod+Shift+32 split h
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace 1
+bindsym $super+Shift+2 move container to workspace 2
+bindsym $super+Shift+3 move container to workspace 3
+bindsym $super+Shift+4 move container to workspace 4
+bindsym $super+Shift+5 move container to workspace 5
+bindsym $super+Shift+6 move container to workspace 6
+bindsym $super+Shift+7 move container to workspace 7
+bindsym $super+Shift+8 move container to workspace 8
 
-# Focus parent/child                                           ($mod[+Shift]+;)
-# note: this key doesn’t work well with Qwerty-Lafayette (dead key)
-bind $mod+47       focus parent
-bind $mod+Shift+47 focus child
+# Move to workspace with focused container
+bindsym $alt+Shift+1 move container to workspace 1; workspace 1
+bindsym $alt+Shift+2 move container to workspace 2; workspace 2
+bindsym $alt+Shift+3 move container to workspace 3; workspace 3
+bindsym $alt+Shift+4 move container to workspace 4; workspace 4
+bindsym $alt+Shift+5 move container to workspace 5; workspace 5
+bindsym $alt+Shift+6 move container to workspace 6; workspace 6
+bindsym $alt+Shift+7 move container to workspace 7; workspace 7
+bindsym $alt+Shift+8 move container to workspace 8; workspace 8
 
-# Cycle through border styles                                          ($mod+b)
-# (note: does not apply to tabbed containers)
-bind $mod+56 border toggle
+# reload the configuration file
+bindsym $super+Shift+c reload
 
-# }}}
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
 
-#|    applications & scripts                                                {{{
-#|-----------------------------------------------------------------------------
+# exit i3
+#bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
 
-# Start a new terminal                                             ($mod+Enter)
-# bind $mod+36 exec roxterm
-bindsym $mod+Return exec i3-sensible-terminal
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Return mode "default"
+}
+bindsym $super+r mode "resize"
 
-# Start a new file browser                                   ($mod+Shift+Enter)
-# bind $mod+Shift+36 exec $(nautilus --no-desktop)
-bind $mod+Shift+Return exec $(urxvt -e ranger)
+# change borders
+bindsym $super+u border none
+bindsym $super+y border pixel 1
+bindsym $super+n border normal
 
-# Kill focused window
-bindsym $mod+Shift+q kill
 
-# Application launcher                                                 ($mod+p)
-# beware of gnome-settings-daemon:
-# http://askubuntu.com/questions/68463/how-to-disable-global-super-p-shortcut
-# http://askubuntu.com/questions/20113/how-to-stop-mod4-p-from-switching-the-display
-# bind $mod+33 exec $(dmenu_path | sort -u | dmenu -fn '-*-fixed-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#1793d1')
-bind $mod+33 exec --no-startup-id i3-dmenu-desktop
+# panel
+# Start i3bar to display a workspace bar
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file.
-bind $mod+Shift+33 exec --no-startup-id $(dmenu_run -fn '-*-fixed-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#1793d1')
+bar {
+	status_command exec /usr/bin/net-speed.sh
+	#strip_workspace_numbers yes|no
+	#strip_workspace_name yes|no
+	colors {
+    background #2f343f
+    statusline #FFFFFF
+    separator  #666666
 
-# Autostart (= personal startup script)
-# exec $(autostart gtk)
+    focused_workspace  #4C7899 #285577 #FFFFFF
+    active_workspace   #333333 #222222 #FFFFFF
+    inactive_workspace #333333 #222222 #888888
+    urgent_workspace   #2F343A #900000 #FFFFFF
+    #binding_mode      #2F343A #900000 #FFFFFF
+    # colour of border, background, and text
+    }
 
-# }}}
+}
 
-#|    generic shortcuts (xdotool powwa!)                                    {{{
-#|-----------------------------------------------------------------------------
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="calamares"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="bauh"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable border normal
+for_window [class="Garuda Settings Manager"] floating enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="azote"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [title="About Pale Moon"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pamac-updater"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Qtconfig-qt4"] floating enable border normal
+for_window [class="qt5ct"] floating enable sticky enable border normal
+#for_window [title="sudo"] floating enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Timeshift-gtk"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
+for_window [class="keepassxc"] floating enable
+for_window [class="garuda-welcome"] floating enable
 
-# Dvorak-compliant cut/copy/paste                                  ($mod+[xcv])
-bind $mod+53 exec $(xdotool getactivewindow key ctrl+x)
-bind $mod+54 exec $(xdotool getactivewindow key ctrl+c)
-bind $mod+55 exec $(xdotool getactivewindow key ctrl+v)
+# window rules, you can find the window class using xprop
+for_window [class=".*"] border pixel 4
+assign [class=URxvt] 1
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|upgrade2ultimate.sh] floating enable
+for_window [class=URxvt|firedragon|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
+for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
-# Word-by-word movements                                            (alt+arrow)
-# bindsym mod1+Left  exec $(xdotool getactivewindow key ctrl+Left)
-# bindsym mod1+Down  exec $(xdotool getactivewindow key ctrl+Down)
-# bindsym mod1+Up    exec $(xdotool getactivewindow key ctrl+Up)
-# bindsym mod1+Right exec $(xdotool getactivewindow key ctrl+Right)
+# colour of border, background, text, indicator, and child_border
+client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background           #2f343f
 
-#                                                                 (super+arrow)
-bindsym mod4+Left  exec $(xdotool getactivewindow key Home)
-bindsym mod4+Down  exec $(xdotool getactivewindow key Next)
-bindsym mod4+Up    exec $(xdotool getactivewindow key Prior)
-bindsym mod4+Right exec $(xdotool getactivewindow key End)
 
-# Word-by-word selection                                      (alt+shift+arrow)
-# bindsym mod1+Shift+Left  exec $(xdotool getactivewindow key ctrl+shift+Left)
-# bindsym mod1+Shift+Down  exec $(xdotool getactivewindow key ctrl+shift+Down)
-# bindsym mod1+Shift+Up    exec $(xdotool getactivewindow key ctrl+shift+Up)
-# bindsym mod1+Shift+Right exec $(xdotool getactivewindow key ctrl+shift+Right)
 
-#                                                           (super+shift+arrow)
-bindsym mod4+Shift+Left  exec $(xdotool getactivewindow key shift+Home)
-bindsym mod4+Shift+Down  exec $(xdotool getactivewindow key shift+Next)
-bindsym mod4+Shift+Up    exec $(xdotool getactivewindow key shift+Prior)
-bindsym mod4+Shift+Right exec $(xdotool getactivewindow key shift+End)
+#############################
+### settings for i3-gaps: ###
+#############################
 
-# Mouse pointer                                                    ($mod+arrow)
-# bindsym $mod+Left  exec $(xdotool mousemove_relative -- -20   0)
-# bindsym $mod+Down  exec $(xdotool mousemove_relative --   0  20)
-# bindsym $mod+Up    exec $(xdotool mousemove_relative --   0 -20)
-# bindsym $mod+Right exec $(xdotool mousemove_relative --  20   0)
-
-# Mouse clicks                                               ($mod+shift+arrow)
-# bindsym $mod+Shift+Left  exec $(xdotool click 1)
-# bindsym $mod+Shift+Down  exec $(xdotool click 5)
-# bindsym $mod+Shift+Up    exec $(xdotool click 4)
-# bindsym $mod+Shift+Right exec $(xdotool click 3)
-
-# }}}
-
-#|    multimedia keys (Thinkpad X220)                                       {{{
-#|-----------------------------------------------------------------------------
-
-# Screenshot                                                           (PrtScr)
-# +shift ⇒ focused window only
-bind 107       exec $(scrot    -e 'mv $f ~/Pictures/Screenshots')
-bind Shift+107 exec $(scrot -u -e 'mv $f ~/Pictures/Screenshots')
-
-# Volume control                                               (mute|vol-|vol+)
-# https://github.com/fabi1cazenave/dotFiles/blob/master/bin/mvolume
-bind 121 exec $(mvolume / && pkill -USR1 -x i3status)
-bind 122 exec $(mvolume - && pkill -USR1 -x i3status)
-bind 123 exec $(mvolume + && pkill -USR1 -x i3status)
-
-# Playlist control (cmus)                                            (Fn+arrow)
-bind 171 exec $(cmus-remote --next)
-bind 172 exec $(cmus-remote --pause)
-bind 173 exec $(cmus-remote --prev)
-bind 174 exec $(cmus-remote --stop)
-
-# lock, battery, sleep, hibernate                           (Fn+[F2|F3|F4|F12])
-# https://github.com/fabi1cazenave/dotFiles/blob/master/bin/gsession
-bind 160 exec $(gsession lock)
-#bind 244 exec $()
-bind 150 exec $(gsession suspend)
-bind 213 exec $(gsession hibernate)
-
-# ???                                                        (Fn+[F5|F6|F7|F8])
-#bind 246 exec $()
-#bind 220 exec $()
-#bind 235 exec $()
-#bind 199 exec $()
-
-# }}}
-
-#|    Plasma Integration                                                    {{{
-#|-----------------------------------------------------------------------------
-
-# Plasma compatibility improvements
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-
-for_window [class="yakuake"] floating enable
-for_window [class="kruler"] floating enable
-for_window [class="systemsettings"] floating enable
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
-no_focus [class="plasmashell" window_type="notification"]
-
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-
-# Set wallpaper
-exec_always export BG="/home/gianluca/Pictures/auroraDragon.png"
-exec_always --no-startup-id feh --bg-scale /home/gianluca/Pictures/auroraDragon.png
-
-exec --no-startup-id picom --backend glx --experimental-backends -bc
-
-# }}}
-
-#|    gaps                                                                  {{{
-#|-----------------------------------------------------------------------------
-
-# Define default gaps
 # Set inner/outer gaps
-gaps inner 20
-# gaps outer -10
-# gaps vertical -30
+gaps inner 8
+gaps outer 1
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+bindsym $super+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -530,7 +334,6 @@ mode "$mode_gaps" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 mode "$mode_gaps_inner" {
         bindsym plus  gaps inner current plus 5
         bindsym minus gaps inner current minus 5
@@ -556,19 +359,19 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-border_radius 4
+# Set shut down, restart and locking features
+bindsym $super+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-# }}}
-
-#|    misc                                                                  {{{
-#|-----------------------------------------------------------------------------
-
-  # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# }}}
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}

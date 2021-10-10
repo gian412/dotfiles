@@ -31,6 +31,9 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$PATH
 
+# Path to bvm
+export PATH=$HOME/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -74,29 +77,28 @@ source $ZSH/oh-my-zsh.sh
 
 #|    Generic                                                                {{{
 #|------------------------------------------------------------------------------
-alias cp="cp -i"                                                           # Confirm before overwriting something
-alias df='df -h'                                                           # Human-readable sizes
-alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'  # Better disk management
-alias free='free -hwt'                                                     # Show human-readable units with buff and cache on two column and a total for each column
-alias top='htop'                                                           # Better system monitor
-alias help='tldr'                                                          # Better man pages
-alias grep='ack'                                                           # Better grep
-alias ping='prettyping -c 8'                                               # Better ping with count
-alias myip='curl http://ipecho.net/plain; echo'                            # Find my public IP
-alias ip='ip --color=auto'                                                 # Colorized ip
-alias distro='cat /etc/*-release'                                          # See information about my distro
-alias reload='source ~/.zshrc'                                             # Reload terminal
-alias nvimconfig='nvim ~/.config/nvim/init.vim'                            # Open nvim configuration file
-alias l='ls -al'                                                           # List elements
-alias zshconfig='nvim ~/.zshrc'                                            # Open zsh configuration file
-alias v='nvim'							                                               # Map neovim as v
-alias sv='sudo nvim'							                                         # Map sudo neovim as sv
+alias cp="cp -i"                                                            # Confirm before overwriting something
+alias df='df -h'                                                            # Human-readable sizes
+alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'   # Better disk management
+alias free='free -hwt'                                                      # Show human-readable units with buff and cache on two column and a total for each column
+alias top='htop'                                                            # Better system monitor
+alias help='tldr'                                                           # Better man pages
+alias grep='ack'                                                            # Better grep
+alias ping='prettyping -c 8'                                                # Better ping with count
+alias myip='curl http://ipecho.net/plain; echo'                             # Find my public IP
+alias ip='ip --color=auto'                                                  # Colorized ip
+alias distro='cat /etc/*-release'                                           # See information about my distro
+alias reload='source ~/.zshrc'                                              # Reload terminal
+alias nvimconfig='nvim ~/.config/nvim/init.vim'                             # Open nvim configuration file
+alias l='ls -al'                                                            # List elements
+alias zshconfig='nvim ~/.zshrc'                                             # Open zsh configuration file
+alias v='nvim'							                                    # Map nvim as v
+alias sv='sudo nvim'							                            # Map sudo nvim as sv
+alias monitors='~/Scripts/utils/xMonitorManagement.sh'                      # Execute monitor updates
 alias vwrite='~/Scripts/nvim/write.sh'
 alias vcode='~/Scripts/nvim/code.sh'
-if [ $(hostname) = 'garudaDell' ]; then
-    alias ls='colorls'                                                         # List using colorls by default
-    alias sd='cd /run/media/gianluca/gianluca'
-fi
+alias ls='colorls'                                                          # List using colorls by default
+alias sd='cd /run/media/gianluca/gianluca'
 #|  }}}
 
 #|    Package manager                                                        {{{
@@ -179,13 +181,6 @@ alias runc='./main'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# Load undistract-me only on a computer (for WSL2 compatibility)
-# if [ $(hostname) = 'garudaDell' ]; then
-#   source /usr/share/undistract-me/long-running.bash
-#   notify_when_long_running_commands_finish_install
-# fi
 
 # vim: set ft=zsh fdm=marker fmr={{{,}}} fdl=0:
 

@@ -29,7 +29,7 @@ Plug 'alvan/vim-closetag'    " Autoclose tag
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', {
       \ 'do': 'npm install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'c', 'cpp'] }
 
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -174,7 +174,8 @@ let g:coc_global_extensions = [
     \ 'coc-markdownlint',
     \ 'coc-prisma',
     \ 'coc-sh',
-    \ 'coc-tailwindcss'
+    \ 'coc-tailwindcss',
+    \ 'coc-clangd'
     \ ]
 
 
