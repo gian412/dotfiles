@@ -21,7 +21,7 @@ set $lockScreenWallpaper /usr/share/wallpapers/garuda-wallpapers/Garuda-Desert.p
 ### Applications: ###
 
 set $preferredTerminalEmulator /usr/bin/alacritty
-set $preferredBrowser /usr/bin/brave
+set $preferredBrowser /usr/bin/vivaldi-stable
 set $preferredFileManager /usr/bin/thunar
 set $preferredMailClient /usr/bin/geary
 set $preferredTextEditor /usr/bin/nvim
