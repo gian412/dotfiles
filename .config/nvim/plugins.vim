@@ -172,7 +172,6 @@ let g:coc_global_extensions = [
     \ 'coc-emmet',
     \ 'coc-html',
     \ 'coc-markdownlint',
-    \ 'coc-prisma',
     \ 'coc-sh',
     \ 'coc-tailwindcss',
     \ 'coc-clangd'
