@@ -68,7 +68,7 @@ echo "\
                 echo "\
                 ::| git clone https://github.com/zdharma/fast-syntax-highlighting.git \
                 ::| \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting"
-                git clone https://github.com/zdharma/fast-syntax-highlighting.git \
+                git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
                 ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
             fi
 
