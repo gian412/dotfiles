@@ -76,8 +76,7 @@ volume master {
 }
 
 tztime local {
-    format = " %time "
-    format_time = "  %a. %d.%m.%Y |  %H:%M:%S "
+    format = "  %d-%m-%Y |  %H:%M:%S"
     locale = "it_IT.UTF-8"
 }
 

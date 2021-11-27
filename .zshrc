@@ -186,3 +186,5 @@ alias runc='./main'
 
 # added by travis gem
 [ ! -s /home/gianluca/.travis/travis.sh ] || source /home/gianluca/.travis/travis.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
