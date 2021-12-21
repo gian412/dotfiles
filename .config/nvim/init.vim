@@ -39,6 +39,8 @@ set undofile                        " Enable undo saving at buffer close
 set updatetime=500                  " Write swap if nothing is wrote for 500 ms
 set foldmethod=syntax               " Fold based on syntax
 set clipboard+=unnamedplus
+set mouse=nvi
+set mousefocus
 "|  }}}
 
 
@@ -51,6 +53,13 @@ set linebreak       " When breaking, don't break words
 
 autocmd BufRead,BufNewFile   *.md setlocal wrap textwidth=0 linebreak
 autocmd BufRead,BufNewFile   *.sh setlocal textwidth=0 linebreak
+"|  }}}
+
+
+"|    Syntax highlighting                                                    {{{
+"|------------------------------------------------------------------------------
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 "|  }}}
 
 

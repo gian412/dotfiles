@@ -53,7 +53,6 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader>ps :Rg<SPACE>
-nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
 "  }}}
 
@@ -72,8 +71,8 @@ nmap <silent> <leader>gn <Plug>(coc-diagnosti-next-error)
 nnoremap <leader>cr :CocRestart
 nmap <leader>do <Plug>(coc-codeaction)
 
-nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>d :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>s :<C-u>CocList -I symbols<cr>
 "|  }}}
 
 

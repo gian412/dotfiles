@@ -45,6 +45,8 @@ Plug 'wakatime/vim-wakatime'
 Plug 'fabi1cazenave/suckless.vim'  " i3-like windows management
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdtree'
 "|  }}}
 
 
@@ -102,22 +104,22 @@ let $FZF_DEFAULT_OPTS='--reverse'
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 "
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx'
 
 " filenames like *.xml, *.xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
 "
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
 
 " filetypes like xml, html, xhtml, ...
 " These are the file types where this plugin is enabled.
 "
-let g:closetag_filetypes = 'html,xhtml,phtml'
+let g:closetag_filetypes = 'html,xhtml,phtml,jsx,tsx'
 
 " filetypes like xml, xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
 "
-let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,tsx'
 
 " integer value [0|1]
 " This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
@@ -165,6 +167,7 @@ colorscheme ayu
 let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-eslint',
+    \ 'coc-tslint-plugin',
     \ 'coc-prettier',
     \ 'coc-json',
     \ 'coc-git',
@@ -177,9 +180,7 @@ let g:coc_global_extensions = [
     \ 'coc-clangd'
     \ ]
 
-
-
-
+nnoremap <silent> K :call CocAction('doHover')<CR>
 " function! ShowDocIfNoDiagnostic(timer_id)
 "   if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
 "     silent call CocActionAsync('doHover')
@@ -192,11 +193,40 @@ let g:coc_global_extensions = [
 
 " autocmd CursorHoldI * :call <SID>show_hover_doc()
 " autocmd CursorHold * :call <SID>show_hover_doc()
-
 "| }}}
 
 
-"|    indentLine config                                                             {{{
+"|    Ctrlp config                                                             {{{
+"|------------------------------------------------------------------------------
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+"|  }}}
+
+
+"|    NERDTree config                                                        {{{
+"|------------------------------------------------------------------------------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Start NERDTree and put the cursor back in the other window
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+"| }}}
+
+
+"|    indentLine config                                                      {{{
 "|------------------------------------------------------------------------------
 let g:indentLine_char = '▏'
 let g:indentLine_first_char = '▏'
