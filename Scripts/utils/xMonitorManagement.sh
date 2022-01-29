@@ -1,19 +1,19 @@
 if [[ "$(xrandr | grep '^DP1 connected')" != "" ]] && [[ "$(xrandr | grep '^HDMI-1-4 connected')" != "" ]]; then
+    xrandr --output HDMI-1-4 --auto --primary
+    xrandr --output DP1 --auto --right-of DP1
     xrandr --output eDP1 --off
-    xrandr --output DP1 --auto
-    xrandr --output HDMI-1-4 --auto --left-of DP1
 fi
 
 if [[ "$(xrandr | grep '^DP1 connected')" != "" ]] && [[ "$(xrandr | grep '^HDMI-1-4 disconnected')" != "" ]]; then
     xrandr --output HDMI-1-4 --off
-    xrandr --output eDP1 --auto
-    xrandr --output DP1 --auto --right-of eDP1
+    xrandr --output eDP1 --auto --right-of DP1
+    xrandr --output DP1 --auto
 fi
 
 if [[ "$(xrandr | grep '^DP1 disconnected')" != "" ]] && [[ "$(xrandr | grep '^HDMI-1-4 connected')" != "" ]]; then
     xrandr --output DP1 --off
-    xrandr --output eDP1 --auto
-    xrandr --output HDMI-1-4 --auto --left-of eDP1
+    xrandr --output HDMI-1-4 --auto
+    xrandr --output eDP1 --auto --right-of HDMI-1-4
 fi
 
 if [[ "$(xrandr | grep '^DP1 disconnected')" != "" ]] && [[ "$(xrandr | grep '^HDMI-1-4 disconnected')" != "" ]]; then
