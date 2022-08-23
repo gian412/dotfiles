@@ -10,8 +10,8 @@
 # Include desired folders
 !Scripts
 !Templates
-!.config/nvim
-!.config/i3
-!.config/i3status/config
-!.nvimConfigs
-!.vscodeCProj
+!.config/nvim/
+!.config/i3/
+!.config/i3status/config/
+!.nvimConfigs/
+!.vscodeCProj/
