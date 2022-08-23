@@ -1,3 +1,17 @@
+# Exclude all
 /*
+
+# Include desired files
 !.gitignore
-!.gitinclude
+!.zshrc
+!.profile
+!.pyrc
+
+# Include desired folders
+!Scripts/*
+!Templates/*
+!.config/nvim/*
+!.config/i3/*
+!.config/i3status/config/*
+!.nvimConfigs/*
+!.vscodeCProj/*
