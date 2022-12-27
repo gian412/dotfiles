@@ -164,11 +164,6 @@ _G.packer_plugins = {
     path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
   },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
   ["nvim-ts-autotag"] = {
     loaded = true,
     path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
