@@ -14,6 +14,7 @@
 !/Scripts
 !/Templates
 !/.config/nvim/**/*
+!/.config/.nvim/**/*
 !.nvimConfigs/
 !.vscodeCProj/
 !/.config/nvim/init.lua
