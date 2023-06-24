@@ -18,3 +18,4 @@
 !.nvimConfigs/
 !.vscodeCProj/
 !/.config/nvim/init.lua
+!/.config/nvim/lua/*
