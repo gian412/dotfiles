@@ -1,6 +1,6 @@
 # Exclude all
 /*
-/.config/**
+/.config/**/*
 
 # Include desired files
 !.gitignore
