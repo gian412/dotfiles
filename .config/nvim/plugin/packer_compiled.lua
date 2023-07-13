@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  harpoon = {
-    loaded = true,
-    path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/theprimeagen/harpoon"
-  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -144,6 +139,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "/home/gianluca/.local/share/nvim/site/pack/packer/start/vim-be-good",
+    url = "https://github.com/theprimeagen/vim-be-good"
   },
   ["vim-fugitive"] = {
     loaded = true,
