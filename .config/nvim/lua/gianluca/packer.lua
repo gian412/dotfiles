@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
   use ('theprimeagen/vim-be-good')
   use ('mbbill/undotree')
   use ('tpope/vim-fugitive')
+  use ('tpope/vim-surround')
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
