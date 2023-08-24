@@ -24,7 +24,7 @@ set $preferredTerminalEmulator /usr/bin/kitty
 set $preferredBrowser /usr/bin/firefox
 set $preferredFileManager /usr/bin/thunar
 set $preferredMailClient /usr/bin/geary
-set $preferredTextEditor /usr/bin/nvim
+set $preferredTextEditor /usr/bin/code
 set $preferredScreenCaptureTool /usr/bin/flameshot gui
 
 ###########################################
@@ -32,9 +32,9 @@ set $preferredScreenCaptureTool /usr/bin/flameshot gui
 ###########################################
 
 bindsym $super+F1 exec $preferredBrowser;focus
-bindsym $super+F2 exec $preferredFileManager;focus
-bindsym $super+F3 exec $preferredTextEditor;focus
-bindsym $super+F4 exec $preferredMailClient;focus
+bindsym $super+F2 exec $preferredMailClient;focus
+bindsym $super+F3 exec $preferredFileManager;focus
+bindsym $super+F4 exec $preferredTextEditor;focus
 
 
 ### Screen Capturing & Print Screen: ###
@@ -152,10 +152,10 @@ bindsym $super+space floating toggle
 bindsym $super+Shift+space focus mode_toggle
 
 # switch to Tabbed mode
-# bindsym $super+t layout tabbed --border
+bindsym $super+t layout tabbed
 
 # switch to Stacked
-# bindsym $super+g layout stacked
+bindsym $super+g layout stacked
 
 # toggle sticky
 bindsym $super+Shift+s sticky toggle
