@@ -54,8 +54,8 @@ elif [ $isInstallationConfirmed = "y" ]; then
     sudo pacman -Syu
 
     # Check for absent packages from Pacman
-    echo "::| sudo pacman -S --needed base base-devel zsh neovim most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git ncdu htop tldr ack prettyping thunderbird"
-    sudo pacman -S --needed base base-devel zsh neovim most flameshot chromium speedtest-cli npm jdk-openjdk ruby curl git ncdu htop tldr ack prettyping thunderbird
+    echo "::| sudo pacman -S --needed base base-devel zsh neovim most flameshot speedtest-cli npm ruby curl git ncdu htop tldr ack prettyping thunderbird"
+    sudo pacman -S --needed base base-devel zsh neovim most flameshot speedtest-cli npm ruby curl git ncdu htop tldr ack prettyping thunderbird
 
     # Check if yay is installed, otherwise install it
     if ! command -v "yay" &> /dev/null; then
@@ -70,10 +70,6 @@ elif [ $isInstallationConfirmed = "y" ]; then
         echo "::| makepkg -si"
         makepkg -si
     fi
-
-    # Check for absent packages from AUR
-    echo "::| yay -S --needed undistract-me brave-bin visual-studio-code-bin"
-    yay -S --needed undistract-me brave-bin visual-studio-code-bin
 
     # Check if colorls is installed, otherwise install it
     if ! command -v "colorls" &> /dev/null; then
