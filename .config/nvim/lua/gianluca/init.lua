@@ -1,3 +1,3 @@
-require("gianluca.remap")
-require("gianluca.packer")
 require("gianluca.set")
+require("gianluca.remap")
+require("gianluca.lazy")

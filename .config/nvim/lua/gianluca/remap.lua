@@ -1,69 +1,69 @@
-local vim = vim
-local keymap = vim.keymap
+-- Set remaps
 
-vim.g.mapleader = " "
-keymap.set("n", "<leader>pv", vim.cmd.Ex)
+--- Open a vertical split and switch over (v)
+vim.keymap.set("n", "<leader>v", "<C-w>v")
 
--- Move objects and Split
-keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+--- Open an horizontal split and switch over (s)
+vim.keymap.set("n", "<leader>s", "<C-w>s")
 
--- Keep selection active when indenting
-keymap.set("v", "<", "<gv")
-keymap.set("v", ">", ">gv")
+--- Set Explorer remap
+vim.keymap.set("n", "<leader>pv", ":wincmd v<bar> :Ex <bar> :vertical resize 30<CR>")
+vim.keymap.set("n", "<leader>pf", vim.cmd.Ex)
 
---
-keymap.set("n", "J", "mzJ`z")
-keymap.set("n", "<C-d>", "<C-d>zz")
-keymap.set("n", "<C-u>", "<C-u>zz")
-keymap.set("n", "n", "nzzzv")
-keymap.set("n", "N", "Nzzzv")
+--- Window commands
+vim.keymap.set("n", "<leader>h", ":wincmd h<CR>")
+vim.keymap.set("n", "<leader>j", ":wincmd j<CR>")
+vim.keymap.set("n", "<leader>k", ":wincmd k<CR>")
+vim.keymap.set("n", "<leader>l", ":wincmd l<CR>")
 
--- Overwrite without losing the clipboard
-keymap.set("x", "<leader>p", "\"_dP")
+--- Set move highlighted text remap
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Paste from and into system clipboard
-keymap.set("n", "<leader>y", "\"+y")
-keymap.set("v", "<leader>y", "\"+y")
-keymap.set("n", "<leader>Y", "\"+Y")
+--- Keep selection active when indenting/unindenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
--- Delete to void register
-keymap.set("n", "<leader>d", "\"_d")
-keymap.set("v", "<leader>d", "\"_d")
+--- Set Join
+vim.keymap.set("n", "J", "mzJ`z")
+--- Set page jumping to keep cursor in the middle
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+--- Set seraching to keep cursor in the middle
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
-keymap.set("n", "<leader>a", "0")
-keymap.set("n", "<leader>w", "^")
-keymap.set("n", "<leader>e", "$")
-keymap.set("i", "<C-a>", "<Esc>0i")
-keymap.set("i", "<C-w>", "<Esc>^i")
-keymap.set("i", "<C-e>", "<Esc>$a")
+--- Set pasting to keep the pasted textinstead of the cutted one
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- Ignore Q
-keymap.set("n", "Q", "nop>")
+--- Set yanking to yank in the sistem clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
--- Format
-keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format()
+--- Set delete to go in the void register
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+
+-- This is going to get me cancelled
+vim.keymap.set("i", "<C-c>", "<Esc>")
+
+--- Disable capital Q
+vim.keymap.set("n", "Q", "<nop>")
+
+--- Set formatting
+--vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+--vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+--vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+--- Set the replacing on the word I'm on
+vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+--- Set the current file as executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+--- Set source of file
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
 end)
-
--- Quickfix navigation
-keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- Search and replace the word under the cursor
-keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>")
-
--- Split vertical (v) end horizontal (h)
-keymap.set("n", "<leader>v", "<C-w>v")
-keymap.set("n", "<leader>s", "<C-w>s")
-
--- Move through windows
-keymap.set("n", "<leader>h", ":wincmd h<CR>")
-keymap.set("n", "<leader>j", ":wincmd j<CR>")
-keymap.set("n", "<leader>k", ":wincmd k<CR>")
-keymap.set("n", "<leader>l", ":wincmd l<CR>")
-
--- Clear higlight
-keymap.set("n", "<Esc>", ":nohl<CR>")

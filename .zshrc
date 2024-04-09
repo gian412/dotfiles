@@ -20,9 +20,9 @@ fi
 #|    Profile                                                                {{{
 #|------------------------------------------------------------------------------
 # Source profile
-if [ $(hostname) = 'garudaDell' ]; then
-    source "/home/gianluca/.profile"
-fi
+#if [ $(hostname) = 'garudaDell' ]; then
+#    source "/home/gianluca/.profile"
+#fi
 #|  }}}
 
 
@@ -56,14 +56,15 @@ export PATH="$PATH:/home/gianluca/.dotnet/tools"
 # DOTNET - Optional
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export ASPNETCORE_ENVIRONMENT=Development
+
 #|  }}}
 
 
 #|    Plugins                                                                {{{
 #|------------------------------------------------------------------------------
-if [ $(hostname) = 'garudaDell' ]; then
-    source $(dirname $(gem which colorls))/tab_complete.sh
-fi
+#if [ $(hostname) = 'garudaDell' ]; then
+#    source $(dirname $(gem which colorls))/tab_complete.sh
+#fi
 plugins=(git zsh-autosuggestions autoupdate you-should-use fast-syntax-highlighting dotfiles web-search)
 #|  }}}
 

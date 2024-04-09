@@ -1,45 +1,44 @@
-local vim = vim
-local opt = vim.opt
+--  Set useful options
 
--- Enable line number
-opt.nu = true
+--- Set leader
+vim.g.mapleader = " "
 
--- Enable relative line number
-opt.relativenumber = true
+--- Set Line numbers
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
--- Indenting
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.smartindent = true
+--- Set tab
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
--- Wrap
-opt.wrap = false
+--- Set smart indent
+vim.opt.smartindent = true
 
--- Backup and swap
-opt.swapfile = false
-opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/vim/undodir"
-opt.undofile = true
+--- Set no wrap
+vim.opt.wrap = false
 
--- Fix search
--- opt.hlsearch = false
--- opt.incsearch = false
+--- Set undo history and tree
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
 
--- Enhance colors
-opt.termguicolors = true
+--- Set search and highlight
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
--- Manage scrolling
-opt.scrolloff = 8
-opt.signcolumn = "yes"
-opt.isfname:append("@-@")
+--- Set good colors
+vim.opt.termguicolors = true
 
--- Misc
-opt.updatetime = 50
-opt.colorcolumn = "120"
+--- Set scrolling
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
 
--- Fold
-opt.foldmethod = "syntax"
+--- Set update time
+vim.opt.updatetime = 50
 
-vim.g.mapleader= " "
+--- Set color column
+vim.opt.colorcolumn = "120"
