@@ -1,20 +1,32 @@
 -- Set remaps
 
 --- Open a vertical split and switch over (v)
-vim.keymap.set("n", "<leader>v", "<C-w>v")
+-- vim.keymap.set("n", "<leader>v", "<C-w>v")
 
 --- Open an horizontal split and switch over (s)
-vim.keymap.set("n", "<leader>s", "<C-w>s")
+-- vim.keymap.set("n", "<leader>s", "<C-w>s")
 
 --- Set Explorer remap
 vim.keymap.set("n", "<leader>pv", ":wincmd v<bar> :Ex <bar> :vertical resize 30<CR>")
 vim.keymap.set("n", "<leader>pf", vim.cmd.Ex)
 
 --- Window commands
-vim.keymap.set("n", "<leader>h", ":wincmd h<CR>")
-vim.keymap.set("n", "<leader>j", ":wincmd j<CR>")
-vim.keymap.set("n", "<leader>k", ":wincmd k<CR>")
-vim.keymap.set("n", "<leader>l", ":wincmd l<CR>")
+-- vim.keymap.set("n", "<leader>h", ":wincmd h<CR>")
+-- vim.keymap.set("n", "<leader>j", ":wincmd j<CR>")
+-- vim.keymap.set("n", "<leader>k", ":wincmd k<CR>")
+-- vim.keymap.set("n", "<leader>l", ":wincmd l<CR>")
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Disable arrow keys in normal mode
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 --- Set move highlighted text remap
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
