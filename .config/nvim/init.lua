@@ -1,2 +1,4 @@
 -- Require files
-require("gianluca")
+require("gianluca.core")
+require("gianluca.lazy")
+require("current-theme")
