@@ -5,7 +5,6 @@
 # Include desired files
 !.gitignore
 !.zshrc
-!.profile
 !.pyrc
 !.config/i3status/config
 !.config/i3/config
