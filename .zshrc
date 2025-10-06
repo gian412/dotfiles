@@ -86,7 +86,7 @@ alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'   # Be
 alias free='free -hwt'                                                      # Show human-readable units with buff and cache on two column and a total for each column
 alias top='htop'                                                            # Better system monitor
 alias help='tldr'                                                           # Better man pages
-alias grep='ack'                                                            # Better grep
+# alias grep='ack'                                                            # Better grep
 alias ping='prettyping -c 8'                                                # Better ping with count
 alias myip='curl http://ipecho.net/plain; echo'                             # Find my public IP
 alias ip='ip --color=auto'                                                  # Colorized ip

@@ -16,15 +16,15 @@ set $alt Mod1
 ### Wallpaper: ###
 # - You need to specify homescreen wallpaper using azote
 
-set $lockScreenWallpaper /usr/share/wallpapers/garuda-wallpapers/Garuda-Desert.png
+set $lockScreenWallpaper /usr/share/wallpapers/dr460nf1r3-wp-02-sgs.png
 
 ### Applications: ###
 
 set $preferredTerminalEmulator /usr/bin/kitty
-set $preferredBrowser /usr/bin/firefox
+set $preferredBrowser /usr/bin/chromium
 set $preferredFileManager /usr/bin/thunar
-set $preferredMailClient /usr/bin/geary
-set $preferredTextEditor /usr/bin/code
+set $preferredMailClient /usr/bin/thunderbird
+set $preferredTextEditor /usr/bin/geany
 set $preferredScreenCaptureTool /usr/bin/flameshot gui
 
 ###########################################
@@ -36,7 +36,6 @@ bindsym $super+F2 exec $preferredMailClient;focus
 bindsym $super+F3 exec $preferredFileManager;focus
 bindsym $super+F4 exec $preferredTextEditor;focus
 
-
 ### Screen Capturing & Print Screen: ###
 
 bindsym $super+F9 exec $preferredScreenCaptureTool
@@ -44,45 +43,40 @@ bindsym Print exec --no-startup-id $preferredScreenCaptureTool
 
 ### Start a Terminal Emulator: ###
 # - You can change the preferredTerminalEmulator variable
-# - alacritty & xfce4-terminal can also be started using their individual keybindings
+# - Terminal can also be started using their individual keybindings
 
 bindsym $super+Return exec $preferredTerminalEmulator
-
-# set font
-font pango: source code pro 10
+bindsym $super+t exec kitty
+bindsym $super+SHIFT+i exec ~/.local/bin/shcts  # open cheatsheet
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
 
 #autostart
 exec --no-startup-id ~/.fehbg
-exec --no-startup-id xsettingsd &
-exec_always --no-startup-id ~/Scripts/utils/xMonitorManagement.sh
-exec --no-startup-id pasystray
-exec --no-startup-id conky
-exec --no-startup-id conky -c ~/.config/conky/conky-shcts
 exec --no-startup-id copyq
 exec --no-startup-id dunst
-#exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
-#exec --no-startup-id redshift
-exec --no-startup-id desktop-items
+exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id nm-applet
-exec --no-startup-id pamac-tray
+#exec --no-startup-id lxrandr
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-power-manager
-exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id setcursor
+exec --no-startup-id ~/.local/bin/shcts    # comment stop autostart cheatsheet
 #exec_always --no-startup-id ${HOME}/.config/polybar/launch.sh
 exec_always --no-startup-id numlockx on
 exec blueberry-tray
 exec --no-startup-id java -Xmx1024m -jar "/opt/xdman/xdman.jar" -m
+exec --no-startup-id ~/.local/bin/fastfetch-garuda
 
 # hide/unhide i3status bar
 bindsym $super+m bar mode toggle
 
 # start dmenu (a program launcher)
-bindsym $super+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=12'"
-bindsym $super+Shift+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 12'
+bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=20'"
+
+# start rofi (a program launcher) change modus Ctrl + Tab
+bindsym $super+d exec rofi -show run
 
 # Garuda Linux install
 bindsym $super+i exec sudo -E calamares
@@ -91,13 +85,13 @@ bindsym $super+i exec sudo -E calamares
 bindsym $super+l exec i3lock -i $lockScreenWallpaper
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%; exec notify-send 'brightness up 5%'
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-; exec notify-send 'brightness down 5%'
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 #change volume
@@ -108,14 +102,12 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # music control
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl prev
-bindsym XF86AudioPlay exec playerctl toggle
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 
 # Print screen
-
-bindsym $super+Print --release exec --no-startup-id i3-scrot -w
-bindsym $super+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $super+Print exec --no-startup-id "flameshot gui"
 
 # kill focused window
 bindsym $super+c kill
@@ -151,12 +143,6 @@ bindsym $super+space floating toggle
 # change focus between tiling / floating windows
 bindsym $super+Shift+space focus mode_toggle
 
-# switch to Tabbed mode
-bindsym $super+t layout tabbed
-
-# switch to Stacked
-bindsym $super+g layout stacked
-
 # toggle sticky
 bindsym $super+Shift+s sticky toggle
 
@@ -186,7 +172,6 @@ bindsym $super+5 workspace 5
 bindsym $super+6 workspace 6
 bindsym $super+7 workspace 7
 bindsym $super+8 workspace 8
-bindsym $super+9 workspace 9
 
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace 1
@@ -197,7 +182,6 @@ bindsym $super+Shift+5 move container to workspace 5
 bindsym $super+Shift+6 move container to workspace 6
 bindsym $super+Shift+7 move container to workspace 7
 bindsym $super+Shift+8 move container to workspace 8
-bindsym $super+Shift+9 move container to workspace 9
 
 # Move to workspace with focused container
 bindsym $alt+Shift+1 move container to workspace 1; workspace 1
@@ -208,7 +192,10 @@ bindsym $alt+Shift+5 move container to workspace 5; workspace 5
 bindsym $alt+Shift+6 move container to workspace 6; workspace 6
 bindsym $alt+Shift+7 move container to workspace 7; workspace 7
 bindsym $alt+Shift+8 move container to workspace 8; workspace 8
-bindsym $alt+Shift+9 move container to workspace 9; workspace 9
+
+# Swipe gestures
+bindsym --whole-window button19 workspace prev
+bindsym --whole-window button17 workspace next
 
 # reload the configuration file
 bindsym $super+Shift+c reload
@@ -240,19 +227,21 @@ bindsym $super+n border normal
 
 bar {
 	status_command exec /usr/bin/net-speed.sh
+	font pango:source code pro 16
+	separator_symbol "|"
 	#strip_workspace_numbers yes|no
 	#strip_workspace_name yes|no
 	colors {
-    background #2f343f
-    statusline #FFFFFF
-    separator  #666666
-
-    focused_workspace  #4C7899 #285577 #FFFFFF
-    active_workspace   #333333 #222222 #FFFFFF
-    inactive_workspace #333333 #222222 #888888
-    urgent_workspace   #2F343A #900000 #FFFFFF
-    #binding_mode      #2F343A #900000 #FFFFFF
-    # colour of border, background, and text
+    background #181b28
+    statusline #161925
+    separator  #2f343f
+    
+    # colour of          border   background text
+    focused_workspace    #4C7899  #285577    #FFFFFF
+    active_workspace     #333333  #222222    #FFFFFF
+    inactive_workspace   #333333  #222222    #888888
+    urgent_workspace     #2F343A  #900000    #FFFFFF
+    #binding_mode        #2F343A  #900000    #FFFFFF
     }
 
 }
@@ -276,9 +265,11 @@ for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pamac-updater"] floating enable
+for_window [class="pamac-aur"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Qtconfig-qt4"] floating enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="qt6ct"] floating enable sticky enable border normal
 #for_window [title="sudo"] floating enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
@@ -296,13 +287,12 @@ for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucon
 for_window [class=URxvt|firedragon|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
-# colour of border, background, text, indicator, and child_border
-client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
-client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.background           #2f343f
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 
 
@@ -311,8 +301,8 @@ client.background           #2f343f
 #############################
 
 # Set inner/outer gaps
-gaps inner 8
-gaps outer 1
+gaps inner 0
+gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -320,7 +310,7 @@ gaps outer 1
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
