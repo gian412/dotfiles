@@ -165,6 +165,12 @@ return {
         })
         vim.lsp.enable("ts_ls")
 
+        -- pyright
+        vim.lsp.config("pyright", {
+            filetypes = { "python" },
+        })
+        vim.lsp.enable("pyright")
+
         -- gopls
         vim.lsp.config("gopls", {
             settings = {
